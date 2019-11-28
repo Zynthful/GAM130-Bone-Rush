@@ -17,11 +17,6 @@ public class CameraController : MonoBehaviour
     private float rotationX;
     private float rotationY;
 
-    void Awake()
-    {
-        mainCamera.transform.position = new Vector3(gameObject.transform.position.x, headHeight, gameObject.transform.position.z);
-    }
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -29,6 +24,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        UpdateCameraPosition();
         GetMouseMovement();
         PlayerCameraRotation();
     }
@@ -44,5 +40,10 @@ public class CameraController : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(0, rotationY, 0);
         mainCamera.transform.localEulerAngles = new Vector3(-rotationX, rotationY, 0);
+    }
+
+    private void UpdateCameraPosition()
+    {
+        mainCamera.transform.position = new Vector3(gameObject.transform.position.x, headHeight, gameObject.transform.position.z);
     }
 }

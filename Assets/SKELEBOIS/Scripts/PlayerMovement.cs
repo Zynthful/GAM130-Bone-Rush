@@ -24,11 +24,6 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
-    void FixedUpdate()
-    {
-
-    }
-
     private void Move()
     {
         yVelocityFix = new Vector3(0, rb.velocity.y, 0);
