@@ -37,4 +37,10 @@ public class PlayerMovement : MonoBehaviour
         verticalMovement = Input.GetAxisRaw("Vertical");
         movementDirection = (horizontalMovement * transform.right + verticalMovement * transform.forward).normalized;
     }
+
+    private void Jump()
+    {
+        
+    }
+
 }
