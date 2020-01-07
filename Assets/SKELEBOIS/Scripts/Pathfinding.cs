@@ -8,17 +8,18 @@ public class Pathfinding : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject player;
 
+    /*
     void Start()
     {
         Vector3 enemy_location = transform.position;
-        //Vector3 player_location = ???
+        Vector3 player_location = player.transform.position;
     }
+    */
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(transform.position.x);
-        //agent.SetDestination(ENTER PLAYERS LOCATION HERE);
-        UnityEngine.Debug.Log(player.Transform.position);
+        Vector3 player_location = player.transform.position;
+        agent.SetDestination(player_location);
     }
 }
