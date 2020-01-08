@@ -9,13 +9,6 @@ public class Pathfinding : MonoBehaviour
     public GameObject player;
     public float follow_distance = 10f;
 
-    /*
-    void Start()
-    {
-        Vector3 enemy_location = transform.position;
-        Vector3 player_location = player.transform.position;
-    }
-    */
 
     // Update is called once per frame
     void Update()

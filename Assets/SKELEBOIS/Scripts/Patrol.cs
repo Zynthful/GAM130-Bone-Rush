@@ -10,18 +10,26 @@ public class Patrol : MonoBehaviour
     Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
         new Vector3(20f, 1.5f, -20f),
         new Vector3(-20f, 1.5f, -20f),
-        new Vector3(-20f, 1.5f, 20f),};
+        new Vector3(-20f, 1.5f, 20f)};
 
-    public int set_path = 0; 
+    public int set_path = 0;
 
+    //this function is used to stop the AI after it reaches a patrol point 
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSecondsRealtime(wait_time);
+        agent.SetDestination(destinations[set_path]);
+    }
 
     // Start is called before the first frame update
+    //sets a destination for the AI
     void Start()
     {
         agent.SetDestination(destinations[set_path]);
     }
 
     // Update is called once per frame
+    //changes the destination for the AI, works in a loop 0,1,2,3,0...
     void Update()
     {
         Vector3 current_location = transform.position;
@@ -32,7 +40,8 @@ public class Patrol : MonoBehaviour
                 set_path = -1;
             }
             set_path += 1;
-            agent.SetDestination(destinations[set_path]);
+            StartCoroutine(WaitTime()); 
         }
     }
 }
+

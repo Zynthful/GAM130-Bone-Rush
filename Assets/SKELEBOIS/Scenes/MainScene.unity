@@ -660,6 +660,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: skeleton 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7431811585559199056, guid: 7cab53a887e546a4aba9ec00e8998083,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7431811585559199060, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,6 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1871187286}
+  wait_time: 3
 --- !u!1001 &1896335840
 PrefabInstance:
   m_ObjectHideFlags: 0
