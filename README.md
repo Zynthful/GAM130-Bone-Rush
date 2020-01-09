@@ -1,5 +1,5 @@
 # GAM130-Team-1-Skeleton-Game
-SKELEBOISSS
+Bone Rush
 
-AI scritps from:
+AI scripts from:
 https://github.com/Brackeys/NavMesh-Tutorial
