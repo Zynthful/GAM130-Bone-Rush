@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Pathfinding : MonoBehaviour
 {
+    //will only chase the player if they enter their radius
     public NavMeshAgent agent;
     public GameObject player;
     public float follow_distance = 10f;
