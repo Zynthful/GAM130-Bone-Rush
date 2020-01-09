@@ -8,7 +8,7 @@
 |                            |Luke Ryan     |                 |             |              |              |
 |                            |Nicholas Lane |                 |             |              |              |
 
-##Programming Information:<br/><br/>
+## Programming Information:<br/><br/>
 
 AI scripts from:<br/>
 https://github.com/Brackeys/NavMesh-Tutorial
