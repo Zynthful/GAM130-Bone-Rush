@@ -224,6 +224,7 @@ MonoBehaviour:
   agent: {fileID: 223054701}
   player: {fileID: 805846013}
   rotation_speed: 20
+  look_range: 30
 --- !u!195 &223054701 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 7431811585559199066, guid: 7cab53a887e546a4aba9ec00e8998083,
@@ -241,6 +242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wall 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137201827097631430, guid: 2912bbbb4f70456429a5a6d8d5c12ad0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7137201827097631425, guid: 2912bbbb4f70456429a5a6d8d5c12ad0,
         type: 3}
@@ -497,7 +503,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1159834586
 Transform:
@@ -670,6 +676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7137201827097631430, guid: 2912bbbb4f70456429a5a6d8d5c12ad0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7137201827097631425, guid: 2912bbbb4f70456429a5a6d8d5c12ad0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -782,7 +793,7 @@ PrefabInstance:
     - target: {fileID: 7431811585559199056, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7431811585559199060, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
@@ -890,6 +901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: patroling skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431811585559199056, guid: 7cab53a887e546a4aba9ec00e8998083,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7431811585559199060, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
@@ -1157,6 +1173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall
       objectReference: {fileID: 0}
+    - target: {fileID: 7137201827097631430, guid: 2912bbbb4f70456429a5a6d8d5c12ad0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7137201827097631425, guid: 2912bbbb4f70456429a5a6d8d5c12ad0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1225,6 +1246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pathfinding skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431811585559199056, guid: 7cab53a887e546a4aba9ec00e8998083,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7431811585559199060, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
