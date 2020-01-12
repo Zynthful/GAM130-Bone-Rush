@@ -4,4 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Bone Rush/Scenes/Cole'sTestStuff/ColesSceneBackOff.unity
+    guid: e8c63f4f211f2b140957f1759103b29d
+  - enabled: 1
+    path: Assets/Bone Rush/Scenes/Cole'sTestStuff/BossRoom.unity
+    guid: d2f126095064ae541bb1953e20a216dc
+  m_configObjects: {}
