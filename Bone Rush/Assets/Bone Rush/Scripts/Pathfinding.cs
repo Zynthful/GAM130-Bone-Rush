@@ -10,8 +10,6 @@ public class Pathfinding : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject player;
     public float follow_distance = 10f;
-    bool in_attack_radius = false;
-
 
     // Update is called once per frame
     void Update()
@@ -22,10 +20,10 @@ public class Pathfinding : MonoBehaviour
             Vector3 player_location = player.transform.position;
             agent.SetDestination(player_location);
 
-            if (in_attack_radius == true)
+            if (distance_to_player <= 1)        //attacks the player
             {
-                //Face the player
-                //Attack the player
+                //Debug.Log("Can attack");
+                player.active = false;
             }
         }
     }  

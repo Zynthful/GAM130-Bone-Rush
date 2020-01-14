@@ -1013,7 +1013,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!81 &1929412023
 AudioListener:
@@ -1250,7 +1250,7 @@ PrefabInstance:
     - target: {fileID: 7431811585559199056, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7431811585559199060, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
