@@ -11,4 +11,6 @@
 ## Programming Information:<br/><br/>
 
 AI scripts from:<br/>
-https://github.com/Brackeys/NavMesh-Tutorial
+https://github.com/Brackeys/NavMesh-Tutorial<br/>
+State machine script from:<br/>
+https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/

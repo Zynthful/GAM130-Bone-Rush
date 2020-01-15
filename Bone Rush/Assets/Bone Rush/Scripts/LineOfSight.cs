@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class LineOfSight : MonoBehaviour
 {
-    //will only chase the player if they enter their line of sight, can look through walls 
+    //will only chase the player if they enter their line of sight, added extra if statement to stop the AI looking through walls
     //the enemies line of sight can be changed by the look_range variable
     public NavMeshAgent agent;
     public GameObject player;
@@ -32,9 +32,14 @@ public class LineOfSight : MonoBehaviour
         {
             transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
 
-            //int layerMask = 8 << 10;     //makes only layers 8-10 be effected by the ray (player, enemies, walls) NOT WORKING???
-            int layerMask = (1 << 8);      //tracks the player but can look through walls  
+            //int layerMask = 8 << 10;     //makes only layers 8-10 be effected by the ray (player, enemies, walls) NOT WORKING ANYMORE???
+            int layerMask = 1 << 10;
             RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
+            {
+                Debug.Log("Wall");
+            }
+            layerMask = 1 << 8;
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
