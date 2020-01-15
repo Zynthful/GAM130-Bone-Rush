@@ -6,13 +6,18 @@ using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public int wait_time = 3;
+    public int wait_time = 10;
     Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
         new Vector3(20f, 1.5f, -20f),
         new Vector3(-20f, 1.5f, -20f),
         new Vector3(-20f, 1.5f, 20f)};
 
     public int set_path = 0;
+
+    void Rotate()
+    {
+        transform.Rotate(0f, 0f, 0f, Space.Self);
+    }
 
     //this function is used to stop the AI after it reaches a patrol point 
     IEnumerator WaitTime()
@@ -35,6 +40,9 @@ public class Patrol : MonoBehaviour
         Vector3 current_location = transform.position;
         if (current_location.x == destinations[set_path].x && current_location.z == destinations[set_path].z)
         {
+
+            Rotate();
+
             if (set_path == 3)
             {
                 set_path = -1;

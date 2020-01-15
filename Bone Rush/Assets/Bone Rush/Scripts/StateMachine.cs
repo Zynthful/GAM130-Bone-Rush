@@ -1,11 +1,9 @@
 ﻿using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class StateMachine : MonoBehaviour
 {
-    //[SerializeField] private LayerMask _layerMask;
 
     Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
         new Vector3(20f, 1.5f, -20f),

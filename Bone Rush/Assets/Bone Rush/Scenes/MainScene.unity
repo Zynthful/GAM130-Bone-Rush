@@ -1083,6 +1083,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7431811585559199060, guid: 7cab53a887e546a4aba9ec00e8998083,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.99
+      objectReference: {fileID: 0}
     - target: {fileID: 7431811585559199065, guid: 7cab53a887e546a4aba9ec00e8998083,
         type: 3}
       propertyPath: player
@@ -1110,7 +1115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1896335843}
-  wait_time: 3
+  wait_time: 10
   set_path: 0
 --- !u!195 &1896335843 stripped
 NavMeshAgent:
