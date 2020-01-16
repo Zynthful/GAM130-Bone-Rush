@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿//Code adapted from https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class StateMachine : MonoBehaviour
 {
-
     Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
         new Vector3(20f, 1.5f, -20f),
         new Vector3(-20f, 1.5f, -20f),
@@ -12,16 +12,13 @@ public class StateMachine : MonoBehaviour
     private State _currentState;
     public NavMeshAgent agent;
     public GameObject player;
-    public float follow_distance = 10f;
-    public int set_path = 0;
-    public int wait_time = 3;
+    private float follow_distance = 10f;
+    private int set_path = 0;
+    private float look_range = 25f;
+    public float rotation_speed = 35;
+    private float stopping_rotation = 0;
 
-    IEnumerator WaitTime()
-    {
-        yield return new WaitForSecondsRealtime(wait_time);
-        agent.SetDestination(destinations[set_path]);
-    }
-
+    public float time;
 
     private void Update()
     {
@@ -39,7 +36,7 @@ public class StateMachine : MonoBehaviour
                             set_path = -1;
                         }
                         set_path += 1;
-                        StartCoroutine(WaitTime());
+                        _currentState = State.Search;
                     }
 
 
@@ -51,8 +48,32 @@ public class StateMachine : MonoBehaviour
                     break;
                 }
 
-            case State.Patrol_Random:
+            case State.Search:
                 {
+                    transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
+
+                    int layerMask = 1 << 10;
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
+                    {
+                        //Debug.Log("Wall found");
+                    }
+                    else
+                    {
+                        layerMask = 1 << 8;
+                        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
+                        {
+                            //Debug.Log("Player found");
+                            _currentState = State.Follow;
+                        }
+                    }
+
+                    float current_rotation = transform.eulerAngles.y;
+                    if (current_rotation == stopping_rotation)
+                    {
+                        _currentState = State.Patrol;
+                    }
+
                     break;
                 }
 
@@ -62,10 +83,10 @@ public class StateMachine : MonoBehaviour
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                        if (distance_to_player <= 1)
-                        {
-                            _currentState = State.Attack;
-                        }
+                    if (distance_to_player <= 1)
+                    {
+                        _currentState = State.Attack;
+                    }
                     break;
 
                 }
@@ -82,7 +103,7 @@ public class StateMachine : MonoBehaviour
     public enum State
     {
         Patrol,
-        Patrol_Random,
+        Search,
         Follow,
         Attack
     }

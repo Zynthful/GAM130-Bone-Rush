@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7431811585559199063}
   - component: {fileID: 7431811585559199067}
   - component: {fileID: 7431811585559199066}
-  - component: {fileID: 7431811585559199065}
+  - component: {fileID: 1213718149312182530}
   m_Layer: 9
-  m_Name: skeleton 1
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7431811585559199065
+--- !u!114 &1213718149312182530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,8 +142,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7431811585559199056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d6b009465152047aed2b0a2e0c7096, type: 3}
+  m_Script: {fileID: 11500000, guid: 596d0f44a3633d84399bb0be91dfc126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7431811585559199066}
-  player: {fileID: 0}
+  player: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+  follow_distance: 10
+  set_path: 0
+  wait_time: 3
