@@ -16,7 +16,6 @@ public class StateMachine : MonoBehaviour
     private int set_path = 0;
     private float look_range = 25f;
     public float rotation_speed = 35;
-    private float stopping_rotation = 0;
 
     public float time;
 
@@ -69,7 +68,8 @@ public class StateMachine : MonoBehaviour
                     }
 
                     float current_rotation = transform.eulerAngles.y;
-                    if (current_rotation == stopping_rotation)
+                    float stopping_rotation = 0;
+                    if (Mathf.Round(current_rotation) == stopping_rotation)
                     {
                         _currentState = State.Patrol;
                     }
@@ -86,6 +86,11 @@ public class StateMachine : MonoBehaviour
                     if (distance_to_player <= 1)
                     {
                         _currentState = State.Attack;
+                    }
+
+                    if (distance_to_player > (follow_distance * 2))
+                    {
+                        _currentState = State.Patrol;
                     }
                     break;
 
