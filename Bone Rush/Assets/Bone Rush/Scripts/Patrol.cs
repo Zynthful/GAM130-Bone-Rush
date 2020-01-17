@@ -14,10 +14,6 @@ public class Patrol : MonoBehaviour
 
     public int set_path = 0;
 
-    void Rotate()
-    {
-        transform.Rotate(0f, 0f, 0f, Space.Self);
-    }
 
     //this function is used to stop the AI after it reaches a patrol point 
     IEnumerator WaitTime()
@@ -41,7 +37,6 @@ public class Patrol : MonoBehaviour
         if (current_location.x == destinations[set_path].x && current_location.z == destinations[set_path].z)
         {
 
-            Rotate();
 
             if (set_path == 3)
             {
