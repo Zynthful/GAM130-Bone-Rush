@@ -11,22 +11,22 @@ public class SwordThings : MonoBehaviour
 	float timePassedSinceAttacking;
 	float attackDelay;
 
-	Animator swordAnimation;
+	public Animator swordAnimation;
 
 	CameraShake cameraShake;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	// Start is called before the first frame update
+	void Start()
+	{
 		cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
 		swordAnimation = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<Animator>();
 		swordAnimation.SetBool("Left?", true);
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-		if(attackDelay <= 0)
+	// Update is called once per frame
+	void Update()
+	{
+		if (attackDelay <= 0)
 		{
 			if (Input.GetKeyDown(KeyCode.Mouse0))
 			{
@@ -64,13 +64,13 @@ public class SwordThings : MonoBehaviour
 		}
 		timePassedSinceAttacking += Time.deltaTime;
 
-		if(timePassedSinceAttacking >= 1.5f && !swordAnimation.GetBool("Left?"))
+		if (timePassedSinceAttacking >= 1.5f && !swordAnimation.GetBool("Left?"))
 		{
 			swordAnimation.SetBool("Swing", false);
 			swordAnimation.SetBool("ResetPos", true);
 			swordAnimation.SetBool("Left?", !swordAnimation.GetBool("Left?"));
 		}
-		else if(swordAnimation.GetBool("ResetPos") && !swordAnimation.GetCurrentAnimatorStateInfo(0).IsName("SwordSwing"))
+		else if (swordAnimation.GetBool("ResetPos") && !swordAnimation.GetCurrentAnimatorStateInfo(0).IsName("SwordSwing"))
 		{
 			swordAnimation.SetBool("ResetPos", false);
 		}
@@ -90,13 +90,5 @@ public class SwordThings : MonoBehaviour
 		attackDelay = .3f;
 		swordAnimation.SetBool("Left?", !swordAnimation.GetBool("Left?"));
 		swordAnimation.SetBool("Swing", true);
-	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		if(other.transform.root != transform.root) // Checks that it is not colliding with the player
-		{
-			// Do stuff
-		}
 	}
 }
