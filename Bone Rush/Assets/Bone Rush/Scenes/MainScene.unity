@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401503697}
   m_Layer: 0
-  m_Name: Makers
+  m_Name: Markers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 807600677}
   m_Layer: 0
-  m_Name: Maker4
+  m_Name: Marker4
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -696,7 +696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 817589856}
   m_Layer: 0
-  m_Name: Maker1
+  m_Name: Marker1
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -974,75 +974,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1592805647}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1664208572
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1632658926286696622, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_Name
-      value: enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 22.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632658926286696618, guid: 04413aa8a5c466f4ebd1ece236479957,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 04413aa8a5c466f4ebd1ece236479957, type: 3}
 --- !u!1 &1678499560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678499561}
   m_Layer: 0
-  m_Name: Maker3
+  m_Name: Marker3
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1117,7 +1048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1912068540}
   m_Layer: 0
-  m_Name: Maker2
+  m_Name: Marker2
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
