@@ -23,6 +23,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnRandomPrefab()
     {
-        Instantiate(skeleton, transform.position, Quaternion.identity);
+        Instantiate(skeleton, transform.position, Quaternion.identity, transform);
     }
 }

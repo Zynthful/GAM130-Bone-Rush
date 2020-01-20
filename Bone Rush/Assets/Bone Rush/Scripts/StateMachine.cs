@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class StateMachine : MonoBehaviour
 {
-    Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
+    public Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
         new Vector3(20f, 1.5f, -20f),
         new Vector3(-20f, 1.5f, -20f),
         new Vector3(-20f, 1.5f, 20f)};
@@ -16,7 +16,10 @@ public class StateMachine : MonoBehaviour
     private float look_range = 25f;
     public float rotation_speed = 35;
     private GameObject player;
-    //public float time;
+    float current_rotation;
+    bool location_set = false;
+    float stopping_rotation;
+    float enemy_current_rotation;
 
     private void Update()
     {
@@ -67,13 +70,17 @@ public class StateMachine : MonoBehaviour
                         }
                     }
 
-                    float current_rotation = transform.eulerAngles.y;
-                    float stopping_rotation = 0;
-                    if (Mathf.Round(current_rotation) == stopping_rotation)
+                    enemy_current_rotation = transform.eulerAngles.y;
+                    if (location_set == false)
                     {
+                        stopping_rotation = Mathf.Round(enemy_current_rotation) - 1;
+                        location_set = true;
+                    }
+                    if (Mathf.Round(enemy_current_rotation) == stopping_rotation)
+                    {
+                        location_set = false;
                         _currentState = State.Patrol;
                     }
-
                     break;
                 }
 
