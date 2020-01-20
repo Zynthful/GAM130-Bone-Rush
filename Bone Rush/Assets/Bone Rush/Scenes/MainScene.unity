@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 805846014}
   m_Layer: 8
   m_Name: RigidBodyFPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1179,6 +1179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RigidBodyFPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909560190856500281, guid: 48a3d8356a3fe1740bd33bb55d83976b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5909560189086509868, guid: 48a3d8356a3fe1740bd33bb55d83976b,
         type: 3}

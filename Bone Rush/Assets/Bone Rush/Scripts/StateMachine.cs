@@ -11,13 +11,12 @@ public class StateMachine : MonoBehaviour
         new Vector3(-20f, 1.5f, 20f)};
     private State _currentState;
     public NavMeshAgent agent;
-    public GameObject player;
     private float follow_distance = 10f;
     private int set_path = 0;
     private float look_range = 25f;
     public float rotation_speed = 35;
-
-    public float time;
+    private GameObject player;
+    //public float time;
 
     private void Update()
     {
@@ -25,6 +24,7 @@ public class StateMachine : MonoBehaviour
         {
             case State.Patrol:
                 {
+                    player = GameObject.FindWithTag("Player");
                     agent.SetDestination(destinations[set_path]);
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 current_location = transform.position;
