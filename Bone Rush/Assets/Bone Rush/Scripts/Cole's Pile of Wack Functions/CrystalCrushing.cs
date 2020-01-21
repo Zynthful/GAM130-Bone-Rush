@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public class CrystalCrushing : MonoBehaviour
@@ -10,11 +11,17 @@ public class CrystalCrushing : MonoBehaviour
 	//public static bool crystalCrushed { get; set; }
 	bool crystalCrushed;
 
+	public AudioClip crystalAudioClip;
+
+	public ParticleSystem crystalParticles;
+
 	float crushToTeleportDelay;
 
     // Start is called before the first frame update
     void Start()
     {
+		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
+		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/CrushCrystalAUDIO.wav", typeof(AudioClip));
 		gameObject.transform.parent = null;
 		DontDestroyOnLoad(gameObject);
 	}
@@ -25,7 +32,9 @@ public class CrystalCrushing : MonoBehaviour
 		if (Input.GetAxis("CrushCrystal") == 1 && !crystalCrushed)
 		{
 			crystalCrushed = true;
-			crushToTeleportDelay = 2f;
+			AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
+			crystalParticles.Play();
+			crushToTeleportDelay = 4.5f;
 		}
 		else if(crushToTeleportDelay > 0)
 		{
