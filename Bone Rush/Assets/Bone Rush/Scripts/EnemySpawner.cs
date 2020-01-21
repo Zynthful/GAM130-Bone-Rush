@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     private float timer;
     private GameObject spawner;
 
+    //spawns the first enemy once the game starts
+    //if only one enemy is spawned then the game object is deactivated
     private void Start()
     {
         if (amount_of_enemies >= 1)
@@ -21,6 +23,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    //spawn if more then one enemies has been selected
+    //uses a timer to make enemies not all group up
+    //deactivates the game object once all enemies are spawned
     private void Update()
     {
         timer += Time.deltaTime;
@@ -36,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
+    //spawns the enemies into the scene
     private void SpawnEnemy()
     {
         amount_of_enemies -= 1;

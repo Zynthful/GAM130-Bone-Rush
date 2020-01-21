@@ -17,11 +17,12 @@ public class StateMachine : MonoBehaviour
     float stopping_rotation;
     float enemy_current_rotation;
 
+    //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player Weapon")
-        { 
-        //enemy take damage
+        {
+            Debug.Log("ow");        //enemy take damage
         }
     }
 
@@ -30,6 +31,8 @@ public class StateMachine : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         switch (_currentState)
         {
+            //in this state the enemy walks from one marker to another, then searches for the player
+            //will follow the player if they get too close
             case State.Patrol:
                 {
                     Vector3 enemy_location = destinations[set_path].transform.position;
@@ -38,7 +41,7 @@ public class StateMachine : MonoBehaviour
                     Vector3 current_location = transform.position;
                     if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
                     {
-                        if (set_path == destinations.Length)
+                        if (set_path == (destinations.Length-1))
                         {
                             set_path = -1;
                         }
@@ -55,6 +58,7 @@ public class StateMachine : MonoBehaviour
                     break;
                 }
 
+            //the enemy rotates 360 degrees and follows the player if they are within the enemies line of sight
             case State.Search:
                 {
                     transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
@@ -88,6 +92,8 @@ public class StateMachine : MonoBehaviour
                     break;
                 }
 
+            //follows the player unless they go out of range of the enemy
+            //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
                 {
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
@@ -106,6 +112,7 @@ public class StateMachine : MonoBehaviour
                     break;
 
                 }
+            //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
                     player.SetActive(false);      //Attack
