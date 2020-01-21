@@ -1,6 +1,6 @@
-﻿//Code adapted from https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/
-using System.Collections;
+﻿//Code adapted from https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/  
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class StateMachine : MonoBehaviour
@@ -20,6 +20,14 @@ public class StateMachine : MonoBehaviour
     bool location_set = false;
     float stopping_rotation;
     float enemy_current_rotation;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player Weapon")
+        { 
+        //enemy take damage
+        }
+    }
 
     private void Update()
     {
@@ -58,15 +66,14 @@ public class StateMachine : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
                     {
-                        //Debug.Log("Wall found");
+                        //Wall found
                     }
                     else
                     {
                         layerMask = 1 << 8;
                         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
                         {
-                            //Debug.Log("Player found");
-                            _currentState = State.Follow;
+                            _currentState = State.Follow;       //found player
                         }
                     }
 
@@ -104,13 +111,11 @@ public class StateMachine : MonoBehaviour
                 }
             case State.Attack:
                 {
-                    //Debug.Log("attacking");
-                    player.active = false;
+                    player.SetActive(false);      //Attack
                     break;
                 }
         }
     }
-
 
     public enum State
     {

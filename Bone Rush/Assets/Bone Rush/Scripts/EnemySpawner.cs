@@ -1,28 +1,45 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject skeleton;
     public int amount_of_enemies = 1;
+    public float spawn_rate = 5f;
+    private float timer;
+    private GameObject spawner;
 
-    IEnumerator WaitTime()
+    private void Start()
     {
-        yield return new WaitForSecondsRealtime(5);
+        if (amount_of_enemies >= 1)
+        {
+            SpawnEnemy();
+        }
+        if (amount_of_enemies == 0)
+        {
+            spawner = GameObject.FindWithTag("Spawner");
+            spawner.SetActive(false);
+        }
     }
 
-    void Start()
+    private void Update()
     {
-        for (int i = 0; amount_of_enemies > i; amount_of_enemies--)
+        timer += Time.deltaTime;
+        if (timer >= spawn_rate && amount_of_enemies >= 1)
         {
-            SpawnRandomPrefab();
-            StartCoroutine(WaitTime());
+            timer -= spawn_rate;
+            SpawnEnemy();
+            if (amount_of_enemies == 0)
+            {
+                spawner = GameObject.FindWithTag("Spawner");
+                spawner.SetActive(false);
+            }
         }
     }
 
 
-    private void SpawnRandomPrefab()
+    private void SpawnEnemy()
     {
-        Instantiate(skeleton, transform.position, Quaternion.identity, transform);
+        amount_of_enemies -= 1;
+        Instantiate(skeleton, transform.position, Quaternion.identity);
     }
 }

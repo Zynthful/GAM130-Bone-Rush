@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 347868426}
   m_Layer: 0
   m_Name: Enemy Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   skeleton: {fileID: 1632658926286696622, guid: 04413aa8a5c466f4ebd1ece236479957,
     type: 3}
   amount_of_enemies: 1
+  spawn_rate: 5
 --- !u!1 &401503696
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,16 +267,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401503696}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 817589856}
   - {fileID: 1912068540}
   - {fileID: 1678499561}
   - {fileID: 807600677}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1290260283}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417396237
 GameObject:
@@ -860,6 +861,7 @@ Transform:
   - {fileID: 1159834586}
   - {fileID: 1929412025}
   - {fileID: 347868425}
+  - {fileID: 401503697}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
