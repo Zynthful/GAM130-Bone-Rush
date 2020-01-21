@@ -1,14 +1,10 @@
 ﻿//Code adapted from https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/  
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class StateMachine : MonoBehaviour
 {
-    public Vector3[] destinations = new[] {new Vector3(20f, 0, 20f),
-        new Vector3(20f, 1.5f, -20f),
-        new Vector3(-20f, 1.5f, -20f),
-        new Vector3(-20f, 1.5f, 20f)};
+    public GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
     private float follow_distance = 10f;
@@ -31,17 +27,18 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
+        player = GameObject.FindWithTag("Player");
         switch (_currentState)
         {
             case State.Patrol:
                 {
-                    player = GameObject.FindWithTag("Player");
-                    agent.SetDestination(destinations[set_path]);
+                    Vector3 enemy_location = destinations[set_path].transform.position;
+                    agent.SetDestination(enemy_location);
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 current_location = transform.position;
-                    if (current_location.x == destinations[set_path].x && current_location.z == destinations[set_path].z)
+                    if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
                     {
-                        if (set_path == 3)
+                        if (set_path == destinations.Length)
                         {
                             set_path = -1;
                         }
