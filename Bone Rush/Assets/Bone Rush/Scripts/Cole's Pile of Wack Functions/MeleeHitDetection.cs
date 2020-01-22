@@ -5,25 +5,32 @@ using UnityEngine;
 public class MeleeHitDetection : MonoBehaviour
 {
 
-	SwordThings swordAttackScript;
+    SwordThings swordAttackScript;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-		swordAttackScript = GetComponentInParent<SwordThings>();
-	}
+    // Start is called before the first frame update
+    void Start()
+    {
+        swordAttackScript = GetComponentInParent<SwordThings>();
+    }
 
-	// Update is called once per frame
-	void Update()
-	{
+    // Update is called once per frame
+    void Update()
+    {
 
-	}
+    }
 
-	private void OnTriggerEnter(Collider other)
-	{
-		if (other.transform.root != transform.root && swordAttackScript.swordAnimation.GetBool("Swing")) // Checks that it is not colliding with the player
-		{
-			Destroy(other.gameObject);
-		}
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.root != transform.root && swordAttackScript.swordAnimation.GetBool("Swing")) // Checks that it is not colliding with the player
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("wall"))
+            {
+                Debug.Log("wall");
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
+        }
+    }
 }

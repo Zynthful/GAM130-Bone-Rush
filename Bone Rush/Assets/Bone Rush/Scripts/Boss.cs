@@ -46,7 +46,6 @@ public class Boss : MonoBehaviour
                             set_path = -1;
                         }
                         set_path += 1;
-                        _currentState = State.Search;
                     }
 
 
