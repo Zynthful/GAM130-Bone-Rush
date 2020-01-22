@@ -39,7 +39,7 @@ public class CrystalCrushing : MonoBehaviour
 		else if(crushToTeleportDelay > 0)
 		{
 			crushToTeleportDelay -= Time.deltaTime;
-		}
+        }
 		else if(crushToTeleportDelay <= 0 && crystalCrushed && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
 		{
 			CrushCrystal();
@@ -49,6 +49,6 @@ public class CrystalCrushing : MonoBehaviour
 	// Anything that happens when the crystal is crushed goes here
 	void CrushCrystal()
 	{
-		SceneManager.LoadScene("BossRoom");
+		SceneManager.LoadScene("BossScene");
 	}
 }
