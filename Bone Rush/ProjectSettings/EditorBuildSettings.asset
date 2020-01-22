@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Bone Rush/Scenes/MainMenu.unity
+    guid: 3fd9f6b14da9f624cac84474c7e0e1de
+  - enabled: 1
+    path: Assets/Bone Rush/Scenes/MainScene.unity
+    guid: fd3b16124c77e9c4b9e72b267b615713
+  - enabled: 1
     path: Assets/Bone Rush/Scenes/Cole'sTestStuff/ColesSceneBackOff.unity
     guid: e8c63f4f211f2b140957f1759103b29d
   - enabled: 1
