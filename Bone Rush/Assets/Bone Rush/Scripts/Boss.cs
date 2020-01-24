@@ -120,7 +120,7 @@ public class Boss : MonoBehaviour
                     if (player_health < 1)
                     {
                         SceneManager.LoadScene("GameOver");
-                    }
+}
                     break;
                 }
         }
