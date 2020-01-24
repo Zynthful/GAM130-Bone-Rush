@@ -1,6 +1,7 @@
 ﻿//Code adapted from https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/  
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Boss : MonoBehaviour
     bool location_set = false;
     float stopping_rotation;
     float enemy_current_rotation;
+    private float player_health = 0;
 
     //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
@@ -115,6 +117,10 @@ public class Boss : MonoBehaviour
             case State.Attack:
                 {
                     player.SetActive(false);      //Attack
+                    if (player_health < 1)
+                    {
+                        SceneManager.LoadScene("GameOver");
+                    }
                     break;
                 }
         }
