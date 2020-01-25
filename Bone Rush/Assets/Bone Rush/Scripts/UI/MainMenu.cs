@@ -19,6 +19,12 @@ public class MainMenu : MonoBehaviour
         // Ensure that the game scene is immediately after the MainMenu scene in the build order.
         SceneManager.LoadScene("FirstLevel");
     }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     
 
 
