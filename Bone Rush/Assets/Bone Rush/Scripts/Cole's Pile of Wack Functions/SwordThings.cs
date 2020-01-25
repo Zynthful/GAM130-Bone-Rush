@@ -34,7 +34,7 @@ public class SwordThings : MonoBehaviour
 				startedCounting = true;
 				timePassedSinceAttacking = 0f;
 			}
-			else if (Input.GetKey(KeyCode.Mouse0))
+			else if (Input.GetKey(KeyCode.Mouse0) && countAttackTime == true)
 			{
 				if (!cameraShake.shaking)
 				{
@@ -55,6 +55,10 @@ public class SwordThings : MonoBehaviour
 		if (countAttackTime)
 		{
 			attackHoldTime += Time.deltaTime;
+			if(attackHoldTime >= 3f)
+			{
+				countAttackTime = false;
+			}
 		}
 		else if (startedCounting == true)
 		{

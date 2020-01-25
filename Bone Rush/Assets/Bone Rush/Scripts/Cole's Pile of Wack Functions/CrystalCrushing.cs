@@ -21,7 +21,7 @@ public class CrystalCrushing : MonoBehaviour
     void Start()
     {
 		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
-		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/CrushCrystalAUDIO.wav", typeof(AudioClip));
+		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
 		gameObject.transform.parent = null;
 		DontDestroyOnLoad(gameObject);
 	}
@@ -36,11 +36,11 @@ public class CrystalCrushing : MonoBehaviour
 			crystalParticles.Play();
 			crushToTeleportDelay = 4.5f;
 		}
-		else if(crushToTeleportDelay > 0)
+		else if (crushToTeleportDelay > 0)
 		{
 			crushToTeleportDelay -= Time.deltaTime;
-        }
-		else if(crushToTeleportDelay <= 0 && crystalCrushed && SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+		}
+		else if (crushToTeleportDelay <= 0 && crystalCrushed && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
 		{
 			CrushCrystal();
 		}
