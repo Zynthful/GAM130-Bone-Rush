@@ -17,20 +17,26 @@ public class StateMachine : MonoBehaviour
     bool location_set = false;
     float stopping_rotation;
     float enemy_current_rotation;
-    private float player_health = 0;
+    public PlayerHealth ph;
 
     //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player Weapon")
+        if (other.gameObject.tag == "PlayerWeapon")
         {
             Debug.Log("ow");        //enemy take damage
         }
     }
 
-    private void Update()
+    private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        ph = player.GetComponent<PlayerHealth>();
+    }
+
+    private void Update()
+    {
+        
         switch (_currentState)
         {
             //in this state the enemy walks from one marker to another, then searches for the player
@@ -117,10 +123,12 @@ public class StateMachine : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-                    player.SetActive(false);      //Attack
 
-                    if (player_health < 1)
+                    ph.playerHealth -= ph.damageTaken;      //Attack
+
+                    if (ph.playerHealth <= 0)
                     {
+                        player.SetActive(false);
                         SceneManager.LoadScene("GameOver");
                     }
 
