@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+
 
 public class StateMachine : MonoBehaviour
 {
@@ -18,11 +20,15 @@ public class StateMachine : MonoBehaviour
     float stopping_rotation;
     float enemy_current_rotation;
     public PlayerHealth ph;
+    public SwordThings st;
+    public float attackRate = 1f;
+    private bool hasAttacked;
+    
 
     //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerWeapon")
+        if (other.gameObject.tag == "PlayerWeapon" && st.swordAnimation.GetBool("Swing"))
         {
             Destroy(this.gameObject);
         }
@@ -32,6 +38,7 @@ public class StateMachine : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         ph = player.GetComponent<PlayerHealth>();
+        st = player.GetComponent<SwordThings>();
     }
 
     private void Update()
@@ -123,9 +130,15 @@ public class StateMachine : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-
-                    ph.playerHealth -= ph.damageTaken;      //Attack
-
+                    StartCoroutine(AttackDelay());
+                    if (hasAttacked == false)
+                    {
+                        ph.playerHealth -= ph.damageTaken;
+                        hasAttacked = true;
+                        StartCoroutine(AttackDelay());
+                        _currentState = State.Follow;
+                    }
+                        
                     if (ph.playerHealth <= 0)
                     {
                         player.SetActive(false);
@@ -143,5 +156,11 @@ public class StateMachine : MonoBehaviour
         Search,
         Follow,
         Attack
+    }
+
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(attackRate);
+        hasAttacked = false;
     }
 }
