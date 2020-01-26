@@ -23,13 +23,9 @@ public class MeleeHitDetection : MonoBehaviour
     {
         if (other.transform.root != transform.root && swordAttackScript.swordAnimation.GetBool("Swing")) // Checks that it is not colliding with the player
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("wall"))
+            if (other.gameObject.CompareTag("Enemy"))            
             {
-                Debug.Log("wall");
-            }
-            else
-            {
-                Destroy(other.gameObject);
+                //Destroy(other.gameObject);
             }
         }
     }

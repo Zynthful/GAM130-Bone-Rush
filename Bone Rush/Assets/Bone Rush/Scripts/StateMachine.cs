@@ -24,7 +24,7 @@ public class StateMachine : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerWeapon")
         {
-            Debug.Log("ow");        //enemy take damage
+            Destroy(this.gameObject);
         }
     }
 
