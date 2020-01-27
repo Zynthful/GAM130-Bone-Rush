@@ -23,8 +23,18 @@ public class CrystalCrushing : MonoBehaviour
 		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
 		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
 		gameObject.transform.parent = null;
-		DontDestroyOnLoad(gameObject);
-	}
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("BossScene"))
+        {
+            Debug.Log("in boss room");
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("not in boss room");
+        }
+    }
 
     // Update is called once per frame
     void Update()
