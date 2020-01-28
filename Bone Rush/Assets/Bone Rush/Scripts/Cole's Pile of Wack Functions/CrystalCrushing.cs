@@ -22,16 +22,14 @@ public class CrystalCrushing : MonoBehaviour
     {
 		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
 		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
-		gameObject.transform.parent = null;
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("BossScene"))
         {
             Debug.Log("in boss room");
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
             Debug.Log("not in boss room");
         }
     }
@@ -41,12 +39,11 @@ public class CrystalCrushing : MonoBehaviour
     {
 		if (Input.GetAxis("CrushCrystal") == 1 && !crystalCrushed)
 		{
-			crystalCrushed = true;
-			AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
-			crystalParticles.Play();
-			crushToTeleportDelay = 4.5f;
+			CrushCrystal();
 		}
-		else if (crushToTeleportDelay > 0)
+
+
+		if (crushToTeleportDelay > 0)
 		{
 			crushToTeleportDelay -= Time.deltaTime;
 		}
@@ -57,8 +54,19 @@ public class CrystalCrushing : MonoBehaviour
     }
 
 	// Anything that happens when the crystal is crushed goes here
-	void CrushCrystal()
+	public void CrushCrystal()
 	{
-		SceneManager.LoadScene("BossScene");
+		if(crystalCrushed == false)
+		{
+			crystalCrushed = true;
+			AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
+			gameObject.transform.parent = null;
+			crystalParticles.Play();
+			crushToTeleportDelay = 4.5f;
+		}
+		else
+		{
+			SceneManager.LoadScene("BossScene");
+		}
 	}
 }
