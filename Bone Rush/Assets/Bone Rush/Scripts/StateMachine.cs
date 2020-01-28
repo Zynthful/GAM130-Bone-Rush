@@ -125,26 +125,29 @@ public class StateMachine : MonoBehaviour
                         _currentState = State.Patrol;
                     }
                     break;
-
                 }
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-                    StartCoroutine(AttackDelay());
                     if (hasAttacked == false)
                     {
                         ph.playerHealth -= ph.damageTaken;
                         hasAttacked = true;
-                        StartCoroutine(AttackDelay());
-                        _currentState = State.Follow;
                     }
-                        
+
+                    StartCoroutine(AttackDelay());
+
                     if (ph.playerHealth <= 0)
                     {
                         player.SetActive(false);
                         SceneManager.LoadScene("GameOver");
                     }
 
+                    if (hasAttacked == true)
+                    {
+                        _currentState = State.Follow;
+                    }
+                    
                     break;
                 }
         }
