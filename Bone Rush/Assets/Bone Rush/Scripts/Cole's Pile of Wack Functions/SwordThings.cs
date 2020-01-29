@@ -94,5 +94,7 @@ public class SwordThings : MonoBehaviour
 		attackDelay = .3f;
 		swordAnimation.SetBool("Left?", !swordAnimation.GetBool("Left?"));
 		swordAnimation.SetBool("Swing", true);
-	}
+        // Triggers SwordSwings event in FMOD
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SwordSwings");
+    }
 }

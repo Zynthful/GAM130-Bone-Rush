@@ -16,15 +16,15 @@ MonoBehaviour:
   - {fileID: 114914852876147276}
   - {fileID: 114963170244727112}
   EditorEvents:
-  - {fileID: 114001254673501928}
-  - {fileID: 114136160203017802}
   - {fileID: 114410509926031688}
+  - {fileID: 114858728801090900}
+  - {fileID: 114727229726992930}
   EditorParameters: []
   MasterBanks:
   - {fileID: 114963170244727112}
   StringsBanks:
   - {fileID: 114914852876147276}
-  stringsBankWriteTime: 637158590141094009
+  stringsBankWriteTime: 637158613902611016
   cacheVersion: 3
 --- !u!114 &114001254673501928
 MonoBehaviour:
@@ -244,6 +244,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 131776
   Exists: 1
+--- !u!114 &114727229726992930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SwordSwings
+  m_EditorClassIdentifier: 
+  Path: event:/SwordSwings
+  guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
+  Banks:
+  - {fileID: 114963170244727112}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3881
 --- !u!114 &114734258051318412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +330,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1000
   Exists: 1
+--- !u!114 &114858728801090900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CrystalCrush
+  m_EditorClassIdentifier: 
+  Path: event:/CrystalCrush
+  guid: 2d948f8a5df5dd4887a5e828985b85ba
+  Banks:
+  - {fileID: 114963170244727112}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5964
 --- !u!114 &114914852876147276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,11 +367,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 637158590141094009
+  lastModified: 637158613902611016
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 834
+    Value: 832
   Exists: 1
 --- !u!114 &114963170244727112
 MonoBehaviour:
@@ -341,9 +387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.bank
   SubDir: 
-  lastModified: 637158590140994280
+  lastModified: 637158613902491336
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 132672
+    Value: 132512
   Exists: 1
