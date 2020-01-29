@@ -16,11 +16,7 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy();
         }
-        if (amount_of_enemies == 0)
-        {
-            spawner = GameObject.FindWithTag("Spawner");
-            spawner.SetActive(false);
-        }
+        deactivate();
     }
 
     //spawn if more then one enemies has been selected
@@ -33,11 +29,7 @@ public class EnemySpawner : MonoBehaviour
         {
             timer -= spawn_rate;
             SpawnEnemy();
-            if (amount_of_enemies == 0)
-            {
-                spawner = GameObject.FindWithTag("Spawner");
-                spawner.SetActive(false);
-            }
+            deactivate();
         }
     }
 
@@ -46,5 +38,14 @@ public class EnemySpawner : MonoBehaviour
     {
         amount_of_enemies -= 1;
         Instantiate(skeleton, transform.position, Quaternion.identity);
+    }
+
+    private void deactivate()
+    {
+        if (amount_of_enemies == 0)
+        {
+            spawner = GameObject.FindWithTag("Spawner");
+            spawner.SetActive(false);
+        }
     }
 }

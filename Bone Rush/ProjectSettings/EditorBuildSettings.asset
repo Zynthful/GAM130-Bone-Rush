@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Bone Rush/Scenes/FirstLevel.unity
     guid: fd3b16124c77e9c4b9e72b267b615713
   - enabled: 1
+    path: Assets/Bone Rush/Scenes/SecondLevel.unity
+    guid: 87790eb76eb8e5d48a9dc662f5cee94f
+  - enabled: 1
     path: Assets/Bone Rush/Scenes/BossScene.unity
     guid: 5b357f050409ccb4cb2e601ca8387aa9
   - enabled: 1

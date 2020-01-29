@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114021417644985454}
-  - {fileID: 114736232725004684}
+  - {fileID: 114061943138261664}
   EditorEvents:
   - {fileID: 114797193191084356}
   - {fileID: 114997268955369722}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 114736232725004684}
+  - {fileID: 114061943138261664}
   StringsBanks:
   - {fileID: 114021417644985454}
-  stringsBankWriteTime: 637159043860162286
+  stringsBankWriteTime: 637159057230051601
   cacheVersion: 3
 --- !u!114 &114021417644985454
 MonoBehaviour:
@@ -39,7 +39,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD Banks/Master.strings.bank
   SubDir: 
-  lastModified: 637159043860162286
+  lastModified: 637159057230051601
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -68,6 +68,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3881
+--- !u!114 &114061943138261664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD Banks/Master.bank
+  SubDir: 
+  lastModified: 637159057230051601
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 131648
+  Exists: 1
 --- !u!114 &114100093133564570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +168,7 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 131648
-  Exists: 1
+  Exists: 0
 --- !u!114 &114797193191084356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +184,7 @@ MonoBehaviour:
   Path: event:/CrystalCrush
   guid: 2d948f8a5df5dd4887a5e828985b85ba
   Banks:
-  - {fileID: 114736232725004684}
+  - {fileID: 114061943138261664}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -205,7 +225,7 @@ MonoBehaviour:
   Path: event:/SwordSwings
   guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
   Banks:
-  - {fileID: 114736232725004684}
+  - {fileID: 114061943138261664}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
