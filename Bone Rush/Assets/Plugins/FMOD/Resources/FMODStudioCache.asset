@@ -18,12 +18,13 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 114001254673501928}
   - {fileID: 114136160203017802}
+  - {fileID: 114410509926031688}
   EditorParameters: []
   MasterBanks:
   - {fileID: 114963170244727112}
   StringsBanks:
   - {fileID: 114914852876147276}
-  stringsBankWriteTime: 637158579190446767
+  stringsBankWriteTime: 637158590141094009
   cacheVersion: 3
 --- !u!114 &114001254673501928
 MonoBehaviour:
@@ -157,6 +158,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5964
+--- !u!114 &114410509926031688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/New Event
+  m_EditorClassIdentifier: 
+  Path: event:/New Event
+  guid: 60ef4c740150044f9531d51d9b637ff4
+  Banks:
+  - {fileID: 114963170244727112}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &114536392982008334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,11 +321,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 637158579190446767
+  lastModified: 637158590141094009
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 794
+    Value: 834
   Exists: 1
 --- !u!114 &114963170244727112
 MonoBehaviour:
@@ -317,9 +341,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.bank
   SubDir: 
-  lastModified: 637158579190366988
+  lastModified: 637158590140994280
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 131776
+    Value: 132672
   Exists: 1

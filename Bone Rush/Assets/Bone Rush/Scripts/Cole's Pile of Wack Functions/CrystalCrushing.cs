@@ -49,26 +49,26 @@ public class CrystalCrushing : MonoBehaviour
 		}
 		else if (crushToTeleportDelay <= 0 && crystalCrushed && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
 		{
-			CrushCrystal();
+            CrushCrystal();
 		}
     }
 
 	// Anything that happens when the crystal is crushed goes here
 	public void CrushCrystal()
 	{
-		if(crystalCrushed == false)
+		if (crystalCrushed == false && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
 		{
-			crystalCrushed = true;
             // Triggers CrystalCrush event in FMOD
             FMODUnity.RuntimeManager.PlayOneShot("event:/Crystal Crush");
-			// AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
-			gameObject.transform.parent = null;
+            // AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
+            crystalCrushed = true;
+            gameObject.transform.parent = null;
 			crystalParticles.Play();
 			crushToTeleportDelay = 4.5f;
 		}
-		else
-		{
-			SceneManager.LoadScene("BossScene");
+		else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
+        {
+            SceneManager.LoadScene("BossScene");
 		}
 	}
 }

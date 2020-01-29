@@ -875,6 +875,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1047315779}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1122720473 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1814721651, guid: 58127dbaeaca5d1468dec0743c899500,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777584019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1132721312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1461,7 @@ PrefabInstance:
     - target: {fileID: 1761795958, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
       propertyPath: crystalParticles
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1122720473}
     - target: {fileID: 1814721648, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
       propertyPath: m_IsActive
       value: 0
