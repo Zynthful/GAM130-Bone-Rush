@@ -11,7 +11,7 @@ public class CrystalCrushing : MonoBehaviour
 	//public static bool crystalCrushed { get; set; }
 	bool crystalCrushed;
 
-	public AudioClip crystalAudioClip;
+	// public AudioClip crystalAudioClip;
 
 	public ParticleSystem crystalParticles;
 
@@ -21,7 +21,7 @@ public class CrystalCrushing : MonoBehaviour
     void Start()
     {
 		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
-		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
+		// crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("BossScene"))
         {
@@ -59,7 +59,9 @@ public class CrystalCrushing : MonoBehaviour
 		if(crystalCrushed == false)
 		{
 			crystalCrushed = true;
-			AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
+            // Triggers CrystalCrush event in FMOD
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Crystal Crush");
+			// AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
 			gameObject.transform.parent = null;
 			crystalParticles.Play();
 			crushToTeleportDelay = 4.5f;

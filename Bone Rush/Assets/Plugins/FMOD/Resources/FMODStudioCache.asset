@@ -1,0 +1,325 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 114914852876147276}
+  - {fileID: 114963170244727112}
+  EditorEvents:
+  - {fileID: 114001254673501928}
+  - {fileID: 114136160203017802}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 114963170244727112}
+  StringsBanks:
+  - {fileID: 114914852876147276}
+  stringsBankWriteTime: 637158579190446767
+  cacheVersion: 3
+--- !u!114 &114001254673501928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crystal Crush
+  m_EditorClassIdentifier: 
+  Path: event:/Crystal Crush
+  guid: 2d948f8a5df5dd4887a5e828985b85ba
+  Banks:
+  - {fileID: 114963170244727112}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5964
+--- !u!114 &114004180398257882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\FMOD\Bone Rush\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637158578372490126
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 794
+  Exists: 1
+--- !u!114 &114024141237458630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sword Swings
+  m_EditorClassIdentifier: 
+  Path: event:/Sword Swings
+  guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
+  Banks:
+  - {fileID: 114839692194355448}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3881
+--- !u!114 &114136160203017802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sword Swings
+  m_EditorClassIdentifier: 
+  Path: event:/Sword Swings
+  guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
+  Banks:
+  - {fileID: 114963170244727112}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3881
+--- !u!114 &114314180143780160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637158579190446767
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 794
+  Exists: 1
+--- !u!114 &114324927601777744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crystal Crush
+  m_EditorClassIdentifier: 
+  Path: event:/Crystal Crush
+  guid: 2d948f8a5df5dd4887a5e828985b85ba
+  Banks:
+  - {fileID: 114726981706408652}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5964
+--- !u!114 &114536392982008334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crystal Crush
+  m_EditorClassIdentifier: 
+  Path: event:/Crystal Crush
+  guid: 2d948f8a5df5dd4887a5e828985b85ba
+  Banks:
+  - {fileID: 114839692194355448}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5964
+--- !u!114 &114687147128350830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\FMOD\Bone Rush\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637158553033403582
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 688
+  Exists: 1
+--- !u!114 &114726981706408652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\FMOD\Bone Rush\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637158578372380419
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 131776
+  Exists: 1
+--- !u!114 &114734258051318412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sword Swings
+  m_EditorClassIdentifier: 
+  Path: event:/Sword Swings
+  guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
+  Banks:
+  - {fileID: 114726981706408652}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3881
+--- !u!114 &114839692194355448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637158579190366988
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 131776
+  Exists: 1
+--- !u!114 &114839923567657840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\FMOD\Bone Rush\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637158553033283905
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1000
+  Exists: 1
+--- !u!114 &114914852876147276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 637158579190446767
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 794
+  Exists: 1
+--- !u!114 &114963170244727112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone Rush\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 637158579190366988
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 131776
+  Exists: 1
