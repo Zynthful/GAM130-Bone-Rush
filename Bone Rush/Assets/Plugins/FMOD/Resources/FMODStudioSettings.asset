@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
-  sourceProjectPath: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone
-    Rush\Bone Rush.fspro
-  SourceProjectPathUnformatted: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone
-    Rush\Bone Rush.fspro
-  SourceBankPathUnformatted: C:\Users\Jamie Carnell\Downloads\UNITY\GAM130-Bone-Rush\FMOD\Bone
-    Rush\Build
+  HasSourceProject: 0
+  HasPlatforms: 0
+  sourceProjectPath: ../FMOD/Bone Rush/Bone Rush.fspro
+  sourceBankPath: ../FMOD Banks
+  SourceBankPathUnformatted: C:/Users/Jamie Carnell/Downloads/UNITY/GAM130-Bone-Rush/FMOD/Bone
+    Rush/Build
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0

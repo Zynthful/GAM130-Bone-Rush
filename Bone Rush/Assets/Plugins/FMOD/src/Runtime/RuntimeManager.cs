@@ -278,6 +278,10 @@ retry:
             LoadPlugins(fmodSettings);
             LoadBanks(fmodSettings);
 
+            #if (UNITY_IOS || UNITY_TVOS) && !UNITY_EDITOR
+            RegisterSuspendCallback(HandleInterrupt);
+            #endif
+
             return initResult;
         }
 
@@ -295,52 +299,82 @@ retry:
         List<FMOD.Studio.EventInstance> eventPositionWarnings = new List<FMOD.Studio.EventInstance>();
         #endif
 
-        public static bool AddListener(int index)
+        public static int AddListener(StudioListener listener)
         {
-            if (HasListener[index])
+            // Is the listener already in the list?
+            for (int i = 0; i < Listeners.Count; i++)
             {
-                // Listener already registered
-                Debug.LogError(string.Format(("[FMOD] Listener with index {0} already registered."), index));
+                if (Listeners[i] != null && listener.gameObject == Listeners[i].gameObject)
+                {
+                    Debug.LogWarning(string.Format(("[FMOD] Listener has already been added at index {0}."), i));
+                    return i;
+                }
+            }
+            // If already at the max numListeners
+            if (numListeners >= FMOD.CONSTANTS.MAX_LISTENERS)
+            {
+                Debug.LogWarning(string.Format(("[FMOD] Max number of listeners reached : {0}."), FMOD.CONSTANTS.MAX_LISTENERS));
+                //return -1;
+            }
+
+            // If not already in the list
+            // The next available spot in the list should be at `numListeners`
+            if (Listeners.Count <= numListeners)
+            {
+                Listeners.Add(listener);
+            }
+            else
+            {
+                Listeners[numListeners] = listener;
+            }
+            // Increment `numListeners`
+            numListeners++;
+            // setNumListeners (8 is the most that FMOD supports)
+            int numListenersClamped = Mathf.Min(numListeners, FMOD.CONSTANTS.MAX_LISTENERS);
+            StudioSystem.setNumListeners(numListenersClamped);
+            return numListeners - 1;
+        }
+
+        public static bool RemoveListener(StudioListener listener)
+        {
+            int index = listener.ListenerNumber;
+            // Remove listener
+            if (index != -1)
+            {
+                Listeners[index] = null;
+
+                // Are there more listeners above the index of the one we are removing?
+                if (numListeners - 1 > index)
+                {
+                    // Move any higher index listeners down
+                    for (int i = index; i < Listeners.Count; i++)
+                    {
+                        if (i == Listeners.Count - 1)
+                        {
+                            Listeners[i] = null;
+                        }
+                        else
+                        {
+                            Listeners[i] = Listeners[i + 1];
+                            if (Listeners[i])
+                            {
+                                Listeners[i].ListenerNumber = i;
+                            }
+                        }
+                    }
+                }
+                // Decriment numListeners
+                numListeners--;
+                // Always need at least 1 listener, otherwise "[FMOD] assert : assertion: 'numListeners >= 1 && numListeners <= 8' failed"
+                int numListenersClamped = Mathf.Min(Mathf.Max(numListeners, 1), FMOD.CONSTANTS.MAX_LISTENERS);
+                StudioSystem.setNumListeners(numListenersClamped);
+                // Listener attributes will be updated before the next update, due to the Script Execution Order.
+                return true;
+            }
+            else
+            {
                 return false;
             }
-            HasListener[index] = true;
-            numListeners = RecalculateTotalListeners();
-            StudioSystem.setNumListeners(numListeners);
-            return true;
-        }
-
-        public static bool RemoveListener(int index)
-        {
-            if (index != -1 && HasListener[index])
-            {
-                HasListener[index] = false;
-                numListeners = RecalculateTotalListeners();
-
-                if (StudioSystem.isValid())
-                {
-                    StudioSystem.setNumListeners(Math.Max(numListeners, 1));
-                    return true;
-                }
-            }
-            if (numListeners <= 0)
-            {
-                Debug.LogWarning("[FMOD] No Listeners currently assigned.");
-            }
-            return false;
-        }
-
-        private static int RecalculateTotalListeners()
-        {
-            int highestListenerNum = 0;
-            for (int i = HasListener.Length; i > 0; i--)
-            {
-                if (HasListener[i - 1])
-                {
-                    highestListenerNum = i;
-                    break;
-                }
-            }
-            return highestListenerNum;
         }
 
         bool listenerWarningIssued = false;
@@ -430,23 +464,33 @@ retry:
 
         public static void AttachInstanceToGameObject(FMOD.Studio.EventInstance instance, Transform transform, Rigidbody rigidBody)
         {
+            AttachedInstance attachedInstance = Instance.attachedInstances.Find(x => x.instance.handle == instance.handle);
+            if (attachedInstance == null)
+            {
+                attachedInstance = new AttachedInstance();
+                Instance.attachedInstances.Add(attachedInstance);
+            }
+
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform, rigidBody));
-            var attachedInstance = new AttachedInstance();
             attachedInstance.transform = transform;
             attachedInstance.instance = instance;
             attachedInstance.rigidBody = rigidBody;
-            Instance.attachedInstances.Add(attachedInstance);
         }
 
         public static void AttachInstanceToGameObject(FMOD.Studio.EventInstance instance, Transform transform, Rigidbody2D rigidBody2D)
         {
+            AttachedInstance attachedInstance = Instance.attachedInstances.Find(x => x.instance.handle == instance.handle);
+            if (attachedInstance == null)
+            {
+                attachedInstance = new AttachedInstance();
+                Instance.attachedInstances.Add(attachedInstance);
+            }
+
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform, rigidBody2D));
-            var attachedInstance = new AttachedInstance();
             attachedInstance.transform = transform;
             attachedInstance.instance = instance;
             attachedInstance.rigidBody2D = rigidBody2D;
             attachedInstance.rigidBody = null;
-            Instance.attachedInstances.Add(attachedInstance);
         }
 
         public static void DetachInstanceFromGameObject(FMOD.Studio.EventInstance instance)
@@ -470,7 +514,7 @@ retry:
         {
             if (studioSystem.isValid() && isOverlayEnabled)
             {
-                windowRect = GUI.Window(0, windowRect, DrawDebugOverlay, "FMOD Studio Debug");
+                windowRect = GUI.Window(GetInstanceID(), windowRect, DrawDebugOverlay, "FMOD Studio Debug");
             }
         }
 
@@ -585,28 +629,23 @@ retry:
         }
         #endif
 
-        #if UNITY_IOS
-        /* iOS alarm interruptions do not trigger OnApplicationPause
-         * Sending the app to the background does trigger OnApplicationFocus
-         * We don't want to use this on Android as other things (like the keyboard)
-         * can steal focus.
-         * https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnApplicationFocus.html */
-
-        void OnApplicationFocus(bool focus)
+        #if (UNITY_IOS || UNITY_TVOS) && !UNITY_EDITOR
+        [AOT.MonoPInvokeCallback(typeof(Action<bool>))]
+        static void HandleInterrupt(bool began)
         {
-            if (studioSystem.isValid())
+            if (Instance.studioSystem.isValid())
             {
                 // Strings bank is always loaded
-                if (loadedBanks.Count > 1)
-                    PauseAllEvents(!focus);
+                if (Instance.loadedBanks.Count > 1)
+                    PauseAllEvents(began);
 
-                if (focus)
+                if (began)
                 {
-                    coreSystem.mixerResume();
+                    Instance.coreSystem.mixerSuspend();
                 }
                 else
                 {
-                    coreSystem.mixerSuspend();
+                    Instance.coreSystem.mixerResume();
                 }
             }
         }
@@ -655,7 +694,7 @@ retry:
             }
         }
 
-        #if UNITY_WEBGL
+#if UNITY_ANDROID || UNITY_WEBGL
         IEnumerator loadFromWeb(string bankPath, string bankName, bool loadSamples)
         {
             byte[] loadWebResult;
@@ -675,7 +714,7 @@ retry:
 
             Debug.LogFormat("[FMOD] Finished loading {0}", bankPath);
         }
-        #endif
+#endif // UNITY_ANDROID || UNITY_WEBGL
 
         public static void LoadBank(string bankName, bool loadSamples = false)
         {
@@ -694,7 +733,9 @@ retry:
             {
                 string bankPath = RuntimeUtils.GetBankPath(bankName);
                 FMOD.RESULT loadResult;
-                #if UNITY_ANDROID && !UNITY_EDITOR
+
+                #if !UNITY_EDITOR
+                #if UNITY_ANDROID && !UNITY_2018_OR_NEWER
                 if (!bankPath.StartsWith("file:///android_asset"))
                 {
                     using (var www = new WWW(bankPath))
@@ -713,13 +754,14 @@ retry:
                     }
                 }
                 else
-                #elif UNITY_WEBGL
+                #elif UNITY_ANDROID || UNITY_WEBGL
                 if (bankPath.Contains("://"))
                 {
                     Instance.StartCoroutine(Instance.loadFromWeb(bankPath, bankName, loadSamples));
                 }
                 else
-                #endif
+                #endif // UNITY_ANDROID || UNITY_WEBGL
+                #endif // !UNITY_EDITOR
                 {
                     LoadedBank loadedBank = new LoadedBank();
                     loadResult = Instance.studioSystem.loadBankFile(bankPath, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out loadedBank.Bank);
@@ -977,7 +1019,7 @@ retry:
             return eventDesc;
         }
 
-        public static bool[] HasListener = new bool[FMOD.CONSTANTS.MAX_LISTENERS];
+        public static List<StudioListener> Listeners = new List<StudioListener>();
         private static int numListeners = 0;
 
         public static void SetListenerLocation(GameObject gameObject, Rigidbody rigidBody = null)
@@ -1130,19 +1172,32 @@ retry:
             #elif UNITY_SWITCH && !UNITY_EDITOR
             FMOD.Switch.THREADAFFINITY affinity = new FMOD.Switch.THREADAFFINITY
             {
-                mixer = FMOD.Switch.THREAD.CORE2,
-                studioUpdate = FMOD.Switch.THREAD.CORE2,
-                studioLoadBank = FMOD.Switch.THREAD.CORE2,
-                studioLoadSample = FMOD.Switch.THREAD.CORE2
+                mixer = FMOD.Switch.THREAD.DEFAULT,
+                studioUpdate = FMOD.Switch.THREAD.DEFAULT,
+                studioLoadBank = FMOD.Switch.THREAD.DEFAULT,
+                studioLoadSample = FMOD.Switch.THREAD.DEFAULT
             };
             FMOD.RESULT result = FMOD.Switch.setThreadAffinity(ref affinity);
             CheckInitResult(result, "FMOD.Switch.setThreadAffinity");
+            #elif UNITY_ANDROID && !UNITY_EDITOR
+            FMOD.Android.THREADAFFINITY affinity = new FMOD.Android.THREADAFFINITY
+            {
+                mixer = FMOD.Android.THREAD.DEFAULT,
+                studioUpdate = FMOD.Android.THREAD.DEFAULT,
+                studioLoadBank = FMOD.Android.THREAD.DEFAULT,
+                studioLoadSample = FMOD.Android.THREAD.DEFAULT
+            };
+            FMOD.RESULT result = FMOD.Android.setThreadAffinity(ref affinity);
+            CheckInitResult(result, "FMOD.Android.setThreadAffinity");
             #endif
         }
 
         #if (UNITY_IOS || UNITY_TVOS) && !UNITY_EDITOR
         [DllImport("__Internal")]
         private static extern FMOD.RESULT FmodUnityNativePluginInit(IntPtr system);
+
+        [DllImport("__Internal")]
+        private static extern void RegisterSuspendCallback(Action<bool> func);
         #endif
     }
 }

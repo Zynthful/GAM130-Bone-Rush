@@ -1,6 +1,6 @@
 /* ======================================================================================== */
 /* FMOD Core API - C# wrapper.                                                              */
-/* Copyright (c), Firelight Technologies Pty, Ltd. 2004-2019.                               */
+/* Copyright (c), Firelight Technologies Pty, Ltd. 2004-2020.                               */
 /*                                                                                          */
 /* For more detail visit:                                                                   */
 /* https://fmod.com/resources/documentation-api?version=2.0&page=core-api.html              */
@@ -19,7 +19,7 @@ namespace FMOD
     */
     public class VERSION
     {
-        public const int    number = 0x00020001;
+        public const int    number = 0x00020007;
 #if (UNITY_IPHONE || UNITY_TVOS || UNITY_SWITCH || UNITY_WEBGL) && !UNITY_EDITOR
         public const string dll    = "__Internal";
 #elif (UNITY_PS4) && DEVELOPMENT_BUILD
@@ -29,7 +29,7 @@ namespace FMOD
 #elif (UNITY_PSP2) && !UNITY_EDITOR
         public const string dll    = "libfmodstudio";
 /* Linux defines moved before the Windows define, otherwise Linux Editor tries to use Win lib when selected as build target.*/
-#elif (UNITY_EDITOR_LINUX) || ((UNITY_STANDALONE_LINUX || UNITY_ANDROID || UNITY_XBOXONE) && DEVELOPMENT_BUILD)
+#elif (UNITY_EDITOR_LINUX) || ((UNITY_STANDALONE_LINUX || UNITY_ANDROID || UNITY_XBOXONE || UNITY_STADIA) && DEVELOPMENT_BUILD)
         public const string dll    = "fmodL";
 #elif (UNITY_EDITOR_OSX || UNITY_EDITOR_WIN) || ((UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN) && DEVELOPMENT_BUILD)
         public const string dll    = "fmodstudioL";
@@ -191,12 +191,13 @@ namespace FMOD
         ALSA,            /* Linux                - Advanced Linux Sound Architecture.   (Default on Linux if PulseAudio isn't available) */
         COREAUDIO,       /* Mac / iOS            - Core Audio.                          (Default on Mac and iOS) */
         AUDIOTRACK,      /* Android              - Java Audio Track.                    (Default on Android 2.2 and below) */
-        OPENSL,          /* Android              - OpenSL ES.                           (Default on Android 2.3 and above) */
+        OPENSL,          /* Android              - OpenSL ES.                           (Default on Android 2.3 up to 7.1) */
         AUDIOOUT,        /* PS4                  - Audio Out.                           (Default on PS4) */
         AUDIO3D,         /* PS4                  - Audio3D. */
         WEBAUDIO,        /* Web Browser          - JavaScript webaudio output.          (Default on JavaScript) */
         NNAUDIO,         /* Switch               - nn::audio.                           (Default on Switch) */
         WINSONIC,        /* Win10 / Xbox One     - Windows Sonic. */
+        AAUDIO,          /* Android              - AAudio                               (Default on Android 8.0 and above) */
 
         MAX,             /* Maximum number of output types supported. */
     }
@@ -256,6 +257,7 @@ namespace FMOD
      
     public enum SPEAKER : int
     {
+        NONE = -1,         /* No speaker */
         FRONT_LEFT,        /* The front left speaker */
         FRONT_RIGHT,       /* The front right speaker */
         FRONT_CENTER,      /* The front center speaker */
@@ -367,6 +369,7 @@ namespace FMOD
         MEDIA_FOUNDATION,/* Windows Store Application built in system codecs */
         MEDIACODEC,      /* Android MediaCodec */
         FADPCM,          /* FMOD Adaptive Differential Pulse Code Modulation */
+        OPUS,            /* Opus */
 
         MAX,             /* Maximum number of sound types supported. */
     }
@@ -3151,7 +3154,14 @@ namespace FMOD
         }
         public RESULT getParameterInfo(int index, out DSP_PARAMETER_DESC desc)
         {
-            return FMOD5_DSP_GetParameterInfo(this.handle, index, out desc);
+            IntPtr descPtr;
+            RESULT result = FMOD5_DSP_GetParameterInfo(this.handle, index, out descPtr);
+            #if (UNITY_2017_4_OR_NEWER) && !NET_4_6
+            desc = (DSP_PARAMETER_DESC)Marshal.PtrToStructure(descPtr, typeof(DSP_PARAMETER_DESC));
+            #else
+            desc = Marshal.PtrToStructure<DSP_PARAMETER_DESC>(descPtr);
+            #endif // (UNITY_2017_4_OR_NEWER) && !NET_4_6
+            return result;
         }
         public RESULT getDataParameterIndex(int datatype, out int index)
         {
@@ -3286,7 +3296,7 @@ namespace FMOD
         [DllImport(VERSION.dll)]
         private static extern RESULT FMOD5_DSP_GetNumParameters          (IntPtr dsp, out int numparams);
         [DllImport(VERSION.dll)]
-        private static extern RESULT FMOD5_DSP_GetParameterInfo          (IntPtr dsp, int index, out DSP_PARAMETER_DESC desc);
+        private static extern RESULT FMOD5_DSP_GetParameterInfo          (IntPtr dsp, int index, out IntPtr desc);
         [DllImport(VERSION.dll)]
         private static extern RESULT FMOD5_DSP_GetDataParameterIndex     (IntPtr dsp, int datatype, out int index);
         [DllImport(VERSION.dll)]

@@ -192,17 +192,25 @@ namespace FMODUnity
             }
         }
 
-        public void SetParameter(FMOD.Studio.PARAMETER_ID id, float value)
+        public void SetParameter(string name, float value, bool ignoreseekspeed = false)
         {
             if (instance.isValid())
             {
-                instance.setParameterByID(id, value);
+                instance.setParameterByName(name, value, ignoreseekspeed);
+            }
+        }
+
+        public void SetParameter(FMOD.Studio.PARAMETER_ID id, float value, bool ignoreseekspeed = false)
+        {
+            if (instance.isValid())
+            {
+                instance.setParameterByID(id, value, ignoreseekspeed);
             }
         }
 
         public bool IsPlaying()
         {
-            if (instance.isValid() && instance.isValid())
+            if (instance.isValid())
             {
                 FMOD.Studio.PLAYBACK_STATE playbackState;
                 instance.getPlaybackState(out playbackState);
