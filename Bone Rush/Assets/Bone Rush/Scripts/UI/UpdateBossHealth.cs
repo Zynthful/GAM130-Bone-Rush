@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
     
 public class UpdateBossHealth : MonoBehaviour
 {
@@ -37,7 +36,8 @@ public class UpdateBossHealth : MonoBehaviour
 
         if(BossHealth.value <= 0)
         {
-            Destroy(Boss);
+            // Destroy(Boss);
+            SceneManager.LoadScene("SCN_Menu_Win");
         }
     }
     public void UpdateHealth(int Damage)

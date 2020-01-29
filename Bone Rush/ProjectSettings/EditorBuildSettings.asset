@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Bone Rush/Scenes/MainMenu.unity
+    path: Assets/Bone Rush/Scenes/SCN_Menu_Title.unity
     guid: 3fd9f6b14da9f624cac84474c7e0e1de
   - enabled: 1
-    path: Assets/Bone Rush/Scenes/FirstLevel.unity
+    path: Assets/Bone Rush/Scenes/SCN_Level_1.unity
     guid: fd3b16124c77e9c4b9e72b267b615713
   - enabled: 1
-    path: Assets/Bone Rush/Scenes/SecondLevel.unity
+    path: Assets/Bone Rush/Scenes/SCN_Level_2.unity
     guid: 87790eb76eb8e5d48a9dc662f5cee94f
   - enabled: 1
-    path: Assets/Bone Rush/Scenes/BossScene.unity
+    path: Assets/Bone Rush/Scenes/SCN_Level_Boss.unity
     guid: 5b357f050409ccb4cb2e601ca8387aa9
   - enabled: 1
-    path: Assets/Bone Rush/Scenes/GameOver.unity
+    path: Assets/Bone Rush/Scenes/SCN_Menu_Defeat.unity
     guid: e49fb2dc52baa0f49aeb142594960c73
+  - enabled: 1
+    path: Assets/Bone Rush/Scenes/SCN_Menu_Win.unity
+    guid: 56e8474f34ee15b43932a50c5d8865e2
   - enabled: 0
     path: Assets/Bone Rush/Scenes/Cole'sTestStuff/ColesSceneBackOff.unity
     guid: e8c63f4f211f2b140957f1759103b29d

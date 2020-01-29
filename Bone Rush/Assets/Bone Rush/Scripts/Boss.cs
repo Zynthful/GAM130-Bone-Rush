@@ -119,7 +119,7 @@ public class Boss : MonoBehaviour
                     player.SetActive(false);      //Attack
                     if (player_health < 1)
                     {
-                        SceneManager.LoadScene("GameOver");
+                        SceneManager.LoadScene("SCN_Menu_Defeat");
 }
                     break;
                 }

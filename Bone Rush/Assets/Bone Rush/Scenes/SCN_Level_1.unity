@@ -996,7 +996,8 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1845862893}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6227355275781140524, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
 --- !u!114 &1777584020 stripped
 MonoBehaviour:

@@ -23,7 +23,7 @@ public class CrystalCrushing : MonoBehaviour
 		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
 		// crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
 
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("BossScene"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SCN_Level_Boss"))
         {
             Debug.Log("in boss room");
             //Destroy(gameObject);
@@ -47,7 +47,7 @@ public class CrystalCrushing : MonoBehaviour
 		{
 			crushToTeleportDelay -= Time.deltaTime;
 		}
-		else if (crushToTeleportDelay <= 0 && crystalCrushed && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
+		else if (crushToTeleportDelay <= 0 && crystalCrushed && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SCN_Level_Boss"))
 		{
             CrushCrystal();
 		}
@@ -56,7 +56,7 @@ public class CrystalCrushing : MonoBehaviour
 	// Anything that happens when the crystal is crushed goes here
 	public void CrushCrystal()
 	{
-		if (crystalCrushed == false && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
+		if (crystalCrushed == false && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SCN_Level_Boss"))
 		{
             // Triggers CrystalCrush event in FMOD
             FMODUnity.RuntimeManager.PlayOneShot("event:/CrystalCrush");
@@ -66,9 +66,9 @@ public class CrystalCrushing : MonoBehaviour
 			crystalParticles.Play();
 			crushToTeleportDelay = 4.5f;
 		}
-		else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossScene"))
+		else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SCN_Level_Boss"))
         {
-            SceneManager.LoadScene("BossScene");
+            SceneManager.LoadScene("SCN_Level_Boss");
 		}
 	}
 }

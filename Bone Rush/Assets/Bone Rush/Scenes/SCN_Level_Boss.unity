@@ -1466,7 +1466,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6227355275781140524, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
 --- !u!1 &1777584020 stripped
 GameObject:
@@ -1569,6 +1570,12 @@ Transform:
   m_Father: {fileID: 1290260283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1969162293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2931322073931891757, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 534606680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &11765211315836099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4514,7 +4521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 9071336896471058796}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1969162293}
 --- !u!1 &4037474379499828657
 GameObject:
   m_ObjectHideFlags: 0

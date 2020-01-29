@@ -140,7 +140,7 @@ public class StateMachine : MonoBehaviour
                     if (ph.playerHealth <= 0)
                     {
                         player.SetActive(false);
-                        SceneManager.LoadScene("GameOver");
+                        SceneManager.LoadScene("SCN_Menu_Defeat");
                     }
 
                     if (hasAttacked == true)
