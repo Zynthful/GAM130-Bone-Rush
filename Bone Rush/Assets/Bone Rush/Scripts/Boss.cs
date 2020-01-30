@@ -60,41 +60,6 @@ public class Boss : MonoBehaviour
 
                     break;
                 }
-
-            //the enemy rotates 360 degrees and follows the player if they are within the enemies line of sight
-            case State.Search:
-                {
-                    transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
-
-                    int layerMask = 1 << 10;
-                    RaycastHit hit;
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
-                    {
-                        //Wall found
-                    }
-                    else
-                    {
-                        layerMask = 1 << 8;
-                        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, look_range, layerMask))
-                        {
-                            _currentState = State.Follow;       //found player
-                        }
-                    }
-
-                    enemy_current_rotation = transform.eulerAngles.y;
-                    if (location_set == false)
-                    {
-                        stopping_rotation = Mathf.Round(enemy_current_rotation) - 1;
-                        location_set = true;
-                    }
-                    if (Mathf.Round(enemy_current_rotation) == stopping_rotation)
-                    {
-                        location_set = false;
-                        _currentState = State.Patrol;
-                    }
-                    break;
-                }
-
             //follows the player unless they go out of range of the enemy
             //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
@@ -143,7 +108,6 @@ public class Boss : MonoBehaviour
     public enum State
     {
         Patrol,
-        Search,
         Follow,
         Attack,
         Retreat
