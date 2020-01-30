@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour
     float stopping_rotation;
     float enemy_current_rotation;
     private float player_health = 0;
+    public Animator swing;
 
     //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
@@ -30,17 +31,18 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
+        swing = GameObject.Find("Handle").GetComponent<Animator>();
         player = GameObject.FindWithTag("Player");
+        Vector3 enemy_location = destinations[set_path].transform.position;
+        Vector3 current_location = transform.position;
         switch (_currentState)
         {
             //in this state the enemy walks from one marker to another, then searches for the player
             //will follow the player if they get too close
             case State.Patrol:
                 {
-                    Vector3 enemy_location = destinations[set_path].transform.position;
                     agent.SetDestination(enemy_location);
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
-                    Vector3 current_location = transform.position;
                     if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
                     {
                         if (set_path == (destinations.Length-1))
@@ -101,7 +103,7 @@ public class Boss : MonoBehaviour
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                    if (distance_to_player <= 3)
+                    if (distance_to_player <= 4)
                     {
                         _currentState = State.Attack;
                     }
@@ -116,11 +118,23 @@ public class Boss : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-                    player.SetActive(false);      //Attack
+                    agent.SetDestination(current_location);
+                    swing.Play("BossSwing");
+                    //player.SetActive(false);      
                     if (player_health < 1)
                     {
-                        SceneManager.LoadScene("SCN_Menu_Defeat");
-}
+                        //SceneManager.LoadScene("SCN_Menu_Defeat");
+                    }
+                    _currentState = State.Retreat;
+                    break;
+                }
+            case State.Retreat:
+                {
+                    agent.SetDestination(enemy_location);
+                    if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
+                    {
+                        _currentState = State.Patrol;
+                    }
                     break;
                 }
         }
@@ -131,6 +145,7 @@ public class Boss : MonoBehaviour
         Patrol,
         Search,
         Follow,
-        Attack
+        Attack,
+        Retreat
     }
 }
