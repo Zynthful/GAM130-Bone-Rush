@@ -14,16 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114021417644985454}
+<<<<<<< HEAD
   - {fileID: 114031356878494026}
+=======
+  - {fileID: 114711946491168394}
+>>>>>>> fb15b74298136280f05c61dac9175958d776359c
   EditorEvents:
   - {fileID: 114797193191084356}
   - {fileID: 114997268955369722}
   EditorParameters: []
   MasterBanks:
+<<<<<<< HEAD
   - {fileID: 114031356878494026}
   StringsBanks:
   - {fileID: 114021417644985454}
   stringsBankWriteTime: 637160814451729481
+=======
+  - {fileID: 114711946491168394}
+  StringsBanks:
+  - {fileID: 114021417644985454}
+  stringsBankWriteTime: 637160821165023834
+>>>>>>> fb15b74298136280f05c61dac9175958d776359c
   cacheVersion: 3
 --- !u!114 &114021417644985454
 MonoBehaviour:
@@ -39,7 +50,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD Banks/Master.strings.bank
   SubDir: 
+<<<<<<< HEAD
   lastModified: 637160814451729481
+=======
+  lastModified: 637160821165023834
+>>>>>>> fb15b74298136280f05c61dac9175958d776359c
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -209,6 +224,26 @@ MonoBehaviour:
   - Name: 
     Value: 131648
   Exists: 0
+--- !u!114 &114711946491168394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD Banks/Master.bank
+  SubDir: 
+  lastModified: 637160821165023834
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 131648
+  Exists: 1
 --- !u!114 &114736232725004684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +279,11 @@ MonoBehaviour:
   Path: event:/CrystalCrush
   guid: 2d948f8a5df5dd4887a5e828985b85ba
   Banks:
+<<<<<<< HEAD
   - {fileID: 114031356878494026}
+=======
+  - {fileID: 114711946491168394}
+>>>>>>> fb15b74298136280f05c61dac9175958d776359c
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -305,7 +344,11 @@ MonoBehaviour:
   Path: event:/SwordSwings
   guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
   Banks:
+<<<<<<< HEAD
   - {fileID: 114031356878494026}
+=======
+  - {fileID: 114711946491168394}
+>>>>>>> fb15b74298136280f05c61dac9175958d776359c
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

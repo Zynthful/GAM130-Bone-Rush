@@ -19,6 +19,8 @@ public class Boss : MonoBehaviour
     float enemy_current_rotation;
     private float player_health = 0;
     public Animator swing;
+    const float attackDelayReset = 2f;
+    float attackDelay;
 
     //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
@@ -35,6 +37,11 @@ public class Boss : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         Vector3 enemy_location = destinations[set_path].transform.position;
         Vector3 current_location = transform.position;
+        if(attackDelay > 0)
+        {
+            swing.SetBool("Attacking", false);
+            attackDelay -= Time.deltaTime;
+        }
         switch (_currentState)
         {
             //in this state the enemy walks from one marker to another, then searches for the player
@@ -83,15 +90,23 @@ public class Boss : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-                    agent.SetDestination(current_location);
-                    swing.Play("BossSwing");
-                    //player.SetActive(false);      
-                    if (player_health < 1)
+                    if(attackDelay <= 0)
                     {
-                        //SceneManager.LoadScene("SCN_Menu_Defeat");
+                        agent.SetDestination(current_location);
+                        swing.SetBool("Attacking", true);
+                        //player.SetActive(false);      
+                        if (player_health < 1)
+                        {
+                            //SceneManager.LoadScene("SCN_Menu_Defeat");
+                        }
+                        _currentState = State.Retreat;
+                        attackDelay = attackDelayReset;
+                        break;
                     }
-                    _currentState = State.Retreat;
-                    break;
+                    else
+                    {
+                        break;
+                    }
                 }
             case State.Retreat:
                 {
