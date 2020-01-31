@@ -7,6 +7,7 @@ using System.Collections;
 
 public class StateMachine : MonoBehaviour
 {
+    [Header("Pathfinding Variables")]
     public GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
@@ -19,6 +20,8 @@ public class StateMachine : MonoBehaviour
     bool location_set = false;
     float stopping_rotation;
     float enemy_current_rotation;
+
+    [Header("Attacking Variables")]
     public PlayerHealth ph;
     public SwordThings st;
     public float attackRate = 1f;
@@ -76,6 +79,7 @@ public class StateMachine : MonoBehaviour
             //the enemy rotates 360 degrees and follows the player if they are within the enemies line of sight
             case State.Search:
                 {
+                    hasAttacked = false;
                     transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
 
                     int layerMask = 1 << 10;
@@ -115,7 +119,7 @@ public class StateMachine : MonoBehaviour
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                    if (distance_to_player <= 1)
+                    if (distance_to_player <= 1 && !hasAttacked)
                     {
                         _currentState = State.Attack;
                     }
@@ -133,9 +137,9 @@ public class StateMachine : MonoBehaviour
                     {
                         ph.playerHealth -= ph.damageTaken;
                         hasAttacked = true;
-                    }
+                        StartCoroutine(AttackDelay());
+                    }                                    
 
-                    StartCoroutine(AttackDelay());
 
                     if (ph.playerHealth <= 0)
                     {
@@ -143,11 +147,6 @@ public class StateMachine : MonoBehaviour
                         SceneManager.LoadScene("SCN_Menu_Defeat");
                     }
 
-                    if (hasAttacked == true)
-                    {
-                        _currentState = State.Follow;
-                    }
-                    
                     break;
                 }
         }
@@ -163,7 +162,8 @@ public class StateMachine : MonoBehaviour
 
     IEnumerator AttackDelay()
     {
+        Debug.Log("ReachedCoroutine");
         yield return new WaitForSeconds(attackRate);
-        hasAttacked = false;
+        _currentState = State.Search;
     }
 }
