@@ -26,8 +26,8 @@ public class UpdateBossHealth : MonoBehaviour
             int Damage = Random.Range(1, 10);
             UpdateHealth(Damage);
             TestTimer = 2f;
-            Debug.Log("Boss took: " + Damage + " Damage to HP");
-            Debug.Log("Boss Current HP: " + BossHealth.value);
+            //Debug.Log("Boss took: " + Damage + " Damage to HP");
+            //Debug.Log("Boss Current HP: " + BossHealth.value);
         }
         else
         {
@@ -42,6 +42,6 @@ public class UpdateBossHealth : MonoBehaviour
     }
     public void UpdateHealth(int Damage)
     {
-        BossHealth.value -= Damage;
+        //BossHealth.value -= Damage;
     }
 }

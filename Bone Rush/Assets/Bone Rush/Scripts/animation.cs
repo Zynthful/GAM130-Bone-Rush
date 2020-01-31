@@ -4,36 +4,13 @@ using UnityEngine;
 
 public class animation : MonoBehaviour
 {
-    private Animator anim;
-
-    private float testDelay;
-    private float switchIdle;
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        anim = GameObject.Find("Handle").GetComponent<Animator>();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (testDelay <= 0)
+        if (other.gameObject.CompareTag("Boss"))
         {
-            anim.SetBool("Attacking", true);
-            testDelay = 2f;
-            switchIdle = .5f;
-        }
-        else
-        {
-            testDelay -= Time.deltaTime;
-            switchIdle -= Time.deltaTime;
+            Debug.Log("ow");
         }
 
-        if(switchIdle <= 0)
-        {
-            anim.SetBool("Attacking", false);
-        }
     }
 }
