@@ -26,16 +26,31 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+
+
         // Inverts function.
         isPaused = !isPaused;
 
         // If the game is paused, the timeScale is set to 0 so it actually pauses the game.
-        if (isPaused) Time.timeScale = 0f;
-        else Time.timeScale = 1f;
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+            // Unlocks cursor
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
         // Activates pauseMenu GO.
         pauseMenu.SetActive(isPaused);
         healthBar.SetActive(!isPaused);
+        // Cursor is visible whenever game is paused.
         Cursor.visible = isPaused;
+
+
+
     }
 }

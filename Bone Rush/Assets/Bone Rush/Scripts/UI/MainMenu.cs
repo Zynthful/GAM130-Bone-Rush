@@ -15,6 +15,9 @@ public class MainMenu : MonoBehaviour
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         // Loads the next scene in the build order.
         // Ensure that the game scene is immediately after the MainMenu scene in the build order.
+
+        // Sets timescale to 1 to avoid 'Pause -> Main Menu -> Play' bug
+        Time.timeScale = 1f;
         SceneManager.LoadScene("SCN_Level_1");
     }
 
