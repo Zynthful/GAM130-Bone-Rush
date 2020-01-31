@@ -470,6 +470,8 @@ MonoBehaviour:
   agent: {fileID: 1632658926082945156}
   rotation_speed: 35
   swing: {fileID: 0}
+  damage: 0
+  ph: {fileID: 1777584022}
 --- !u!1001 &534606680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -902,7 +904,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.6666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: e7323b02ce4fb59488ef6008eabf09bf, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: aa7b80319fa16d64f91c9a8231d9fdae, type: 2}
 --- !u!1001 &1047315779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1601,6 +1603,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 0
+--- !u!114 &1777584022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7816301467673929719, guid: 58127dbaeaca5d1468dec0743c899500,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777584019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777584020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7a8c02991212548844785e95b90423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1777584028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3031,7 +3045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632658926082945166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32, y: 2.19, z: -1.6}
+  m_LocalPosition: {x: 1.46, y: 2.19, z: -1.6}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1016661825}
@@ -5778,6 +5792,11 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 9205379122432424437, guid: c604618d6e19b904d929b807c5180f7b,
+        type: 3}
+      propertyPath: damage
+      value: 
+      objectReference: {fileID: 509494309}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c604618d6e19b904d929b807c5180f7b, type: 3}
 --- !u!1 &4851021069147879221

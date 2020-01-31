@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
+    [Header("Pathfinding Variables")]
     public GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
@@ -21,13 +22,17 @@ public class Boss : MonoBehaviour
     public Animator swing;
     const float attackDelayReset = 2f;
     float attackDelay;
+    public bool damage;
+
+    [Header("Attacking Variables")]
+    public PlayerHealth ph;
 
     //checks to see if the enemy has been attacked by a player weapon
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player Weapon")
+        if (other.gameObject.tag == "PlayerWeapon")
         {
-            Debug.Log("ow");        //enemy take damage
+            damage = true;
         }
     }
 
@@ -92,14 +97,16 @@ public class Boss : MonoBehaviour
                 {
                     if(attackDelay <= 0)
                     {
+                        ph.playerHealth -= ph.damageTaken;
                         agent.SetDestination(current_location);
                         swing.SetBool("Attacking", true);
                         //player.SetActive(false);      
-                        if (player_health < 1)
+                        if (ph.playerHealth <= 0)
                         {
-                            //SceneManager.LoadScene("SCN_Menu_Defeat");
+                            player.SetActive(false);
+                            SceneManager.LoadScene("SCN_Menu_Defeat");
                         }
-                        _currentState = State.Retreat;
+                        //_currentState = State.Retreat;
                         attackDelay = attackDelayReset;
                         break;
                     }
