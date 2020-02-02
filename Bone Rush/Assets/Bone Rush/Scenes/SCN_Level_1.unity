@@ -920,11 +920,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1467963876}
     m_Modifications:
-    - target: {fileID: 3641877669368036454, guid: 58127dbaeaca5d1468dec0743c899500,
-        type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 1387678349}
     - target: {fileID: 1537988695010843262, guid: 58127dbaeaca5d1468dec0743c899500,
         type: 3}
       propertyPath: m_Name
@@ -985,6 +980,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3641877669368036454, guid: 58127dbaeaca5d1468dec0743c899500,
+        type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 1387678349}
     - target: {fileID: 7816301467673929719, guid: 58127dbaeaca5d1468dec0743c899500,
         type: 3}
       propertyPath: healthSlider
@@ -994,6 +994,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1537988695001165724, guid: 58127dbaeaca5d1468dec0743c899500,
+        type: 3}
+      propertyPath: movementSettings.playerStaminaBar
+      value: 
+      objectReference: {fileID: 1992115388}
     m_RemovedComponents:
     - {fileID: 6227355275781140524, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
@@ -1188,6 +1193,18 @@ Transform:
   m_Father: {fileID: 1290260283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1992115388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3641877669368036454, guid: 58127dbaeaca5d1468dec0743c899500,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777584019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7c59e8a4989ac48ac0b94b866adcf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2097868977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1632,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerHUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597868058388762108, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7777623826515424201, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}

@@ -1,7 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
+using System.Collections;
 
 public class PlayerStaminaBar : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class PlayerStaminaBar : MonoBehaviour
     public float maxStamina = 100f;
     public float staminaDecrease = 10f;
     public float staminaRegen = 2f;
+    public float minStamina = 0.5f;
     public bool canSprint = true;
 
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class PlayerStaminaBar : MonoBehaviour
 
     void CheckForStamina()
     {
-        if (staminaBar.value <= 0 && movementScript.Running)
+        if (staminaBar.value <= minStamina && movementScript.Running)
         {
             canSprint = false;
         }
@@ -61,6 +62,7 @@ public class PlayerStaminaBar : MonoBehaviour
     {
         if (staminaBar.value < maxStamina)
         {
+            StartCoroutine(WaitForRegen());
             staminaBar.value += Time.deltaTime * staminaRegen;
         }
     }

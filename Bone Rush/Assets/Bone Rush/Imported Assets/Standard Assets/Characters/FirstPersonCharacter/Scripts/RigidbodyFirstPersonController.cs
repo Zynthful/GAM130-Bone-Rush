@@ -21,12 +21,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 #if !MOBILE_INPUT
             private bool m_Running;
-            PlayerStaminaBar playerStaminaBar;
+            public PlayerStaminaBar playerStaminaBar;
 #endif
 
             private void Start()
             {
-
+                playerStaminaBar.GetComponent<PlayerStaminaBar>();
             }
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
