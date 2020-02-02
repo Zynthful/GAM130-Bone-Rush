@@ -15,15 +15,10 @@ public class PlayerStaminaBar : MonoBehaviour
     public float staminaDecrease = 10f;
     public float staminaRegen = 2f;
     public float minStamina = 0.5f;
+    public float timeBeforeRegen = 1f;
+    public bool canRegen;
     public bool canSprint = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         CheckForStamina();
@@ -62,8 +57,22 @@ public class PlayerStaminaBar : MonoBehaviour
     {
         if (staminaBar.value < maxStamina)
         {
-            StartCoroutine(WaitForRegen());
-            staminaBar.value += Time.deltaTime * staminaRegen;
+            if (movementScript.Running == false)
+            {
+                StartCoroutine(WaitForRegen());
+            }
+
+            if (canRegen)
+            {
+                staminaBar.value += Time.deltaTime * staminaRegen;
+            }
         }
     }
+
+    IEnumerator WaitForRegen()
+    {
+        yield return new WaitForSeconds(timeBeforeRegen);
+        canRegen = true;
+    }
+
 }

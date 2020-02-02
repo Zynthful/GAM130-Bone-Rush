@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5612253315743065157
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596d0f44a3633d84399bb0be91dfc126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destinations:
+  - {fileID: 1355046989234676151, guid: 49cfb2efb2789ee43a219565857b77fe, type: 3}
+  - {fileID: 4188881440362544912, guid: 4cd1a45ac5be6f64c859049bc5e3831f, type: 3}
+  - {fileID: 5772804611759017892, guid: 6979ebaf21b3fc944ac85a9d9fce8018, type: 3}
+  - {fileID: 1612998000769603464, guid: b7478a01de04c404ebfaa2339910ef27, type: 3}
   agent: {fileID: 5612253315743065163}
-  player: {fileID: 0}
   rotation_speed: 35
-  time: 0
+  ph: {fileID: 0}
+  st: {fileID: 0}
+  attackRate: 1

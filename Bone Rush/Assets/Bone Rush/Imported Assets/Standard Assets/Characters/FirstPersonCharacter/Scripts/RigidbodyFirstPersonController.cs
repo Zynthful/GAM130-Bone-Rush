@@ -54,6 +54,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (playerStaminaBar.canSprint == true)
                     {
                         CurrentTargetSpeed *= RunMultiplier;
+                        playerStaminaBar.canRegen = false;
                         m_Running = true;
                     }
 	            }
