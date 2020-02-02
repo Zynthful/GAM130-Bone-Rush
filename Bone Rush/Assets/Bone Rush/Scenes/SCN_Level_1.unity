@@ -567,6 +567,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 0
+--- !u!114 &732404844 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1537988695001165724, guid: 58127dbaeaca5d1468dec0743c899500,
+    type: 3}
+  m_PrefabInstance: {fileID: 1777584019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732404842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &732404845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732404842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7c59e8a4989ac48ac0b94b866adcf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaBar: {fileID: 1387678349}
+  movementScript: {fileID: 732404844}
+  maxStamina: 100
+  staminaDecrease: 10
+  staminaRegen: 2
 --- !u!1 &788151348
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +609,7 @@ GameObject:
   - component: {fileID: 788151350}
   - component: {fileID: 788151349}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: __UI__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,6 +779,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1387678349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5597868058388762108, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7777623828025529497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1401983795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5772804611759017893, guid: 6979ebaf21b3fc944ac85a9d9fce8018,
@@ -987,15 +1028,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1224765051, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7816301467673929719, guid: 58127dbaeaca5d1468dec0743c899500,
         type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1845862893}
+    - target: {fileID: 1224765051, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6227355275781140524, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
@@ -1613,6 +1654,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788151352}
     m_Modifications:
+    - target: {fileID: 5597868058955841552, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597868058955841552, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7777623826515424214, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}
       propertyPath: m_Name
@@ -1726,7 +1777,7 @@ PrefabInstance:
     - target: {fileID: 2931322073931891758, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 2931322073931891758, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}
