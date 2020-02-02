@@ -14,6 +14,7 @@ public class PlayerStaminaBar : MonoBehaviour
     public float maxStamina = 100f;
     public float staminaDecrease = 10f;
     public float staminaRegen = 2f;
+    public bool canSprint = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,21 +25,43 @@ public class PlayerStaminaBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckForStamina();
         UpdateSlider();
+        StaminaRegen();
+    }
+
+    void CheckForStamina()
+    {
+        if (staminaBar.value <= 0 && movementScript.Running)
+        {
+            canSprint = false;
+        }
+        else
+        {
+            canSprint = true;
+        }
     }
 
     void UpdateSlider()
     {
-        if (movementScript.Running == true)
+        if (canSprint)
         {
-            staminaBar.value -= Time.deltaTime * staminaDecrease;
+            if (movementScript.Running)
+            {
+                staminaBar.value -= Time.deltaTime * staminaDecrease;
+            }
         }
         else
         {
-            if (staminaBar.value < maxStamina)
-            {
-                staminaBar.value += Time.deltaTime * staminaRegen;
-            }
+            StaminaRegen();
+        }
+    }
+
+    void StaminaRegen()
+    {
+        if (staminaBar.value < maxStamina)
+        {
+            staminaBar.value += Time.deltaTime * staminaRegen;
         }
     }
 }

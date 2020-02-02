@@ -21,7 +21,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 #if !MOBILE_INPUT
             private bool m_Running;
+            PlayerStaminaBar playerStaminaBar;
 #endif
+
+            private void Start()
+            {
+
+            }
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
@@ -45,8 +51,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
 	            if (Input.GetKey(RunKey))
 	            {
-		            CurrentTargetSpeed *= RunMultiplier;
-		            m_Running = true;
+                    if (playerStaminaBar.canSprint == true)
+                    {
+                        CurrentTargetSpeed *= RunMultiplier;
+                        m_Running = true;
+                    }
 	            }
 	            else
 	            {
