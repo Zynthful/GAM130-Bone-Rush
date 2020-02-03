@@ -8,23 +8,24 @@ using System.Collections;
 public class StateMachine : MonoBehaviour
 {
     [Header("Pathfinding Variables")]
-    public GameObject[] destinations;
+    [SerializeField]
+    private GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
     private float follow_distance = 10f;
     private int set_path = 0;
     private float look_range = 25f;
-    public float rotation_speed = 35;
+    private float rotation_speed = 35;
     private GameObject player;
     float current_rotation;
-    bool location_set = false;
-    float stopping_rotation;
-    float enemy_current_rotation;
+    private bool location_set = false;
+    private float stopping_rotation;
+    private float enemy_current_rotation;
 
     [Header("Attacking Variables")]
-    public PlayerHealth ph;
-    public SwordThings st;
-    public float attackRate = 1f;
+    private PlayerHealth ph;
+    private SwordThings st;
+    private float attackRate = 1f;
     private bool hasAttacked;
     
 
@@ -53,6 +54,7 @@ public class StateMachine : MonoBehaviour
             //will follow the player if they get too close
             case State.Patrol:
                 {
+            
                     Vector3 enemy_location = destinations[set_path].transform.position;
                     agent.SetDestination(enemy_location);
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);

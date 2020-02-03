@@ -6,22 +6,23 @@ using UnityEngine.SceneManagement;
 public class Boss : MonoBehaviour
 {
     [Header("Pathfinding Variables")]
-    public GameObject[] destinations;
+    [SerializeField]
+    private GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
     private float follow_distance = 10f;
     private int set_path = 0;
     private float look_range = 25f;
-    public float rotation_speed = 35;
+    private float rotation_speed = 35;
     private GameObject player;
-    float current_rotation;
-    bool location_set = false;
-    float stopping_rotation;
-    float enemy_current_rotation;
+    private float current_rotation;
+    private bool location_set = false;
+    private float stopping_rotation;
+    private float enemy_current_rotation;
     private float player_health = 0;
-    public Animator swing;
-    const float attackDelayReset = 2f;
-    float attackDelay;
+    private Animator swing;
+    private const float attackDelayReset = 2f;
+    private float attackDelay;
     public bool damage;
 
     [Header("Attacking Variables")]

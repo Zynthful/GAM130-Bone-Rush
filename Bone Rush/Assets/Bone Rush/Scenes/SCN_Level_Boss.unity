@@ -468,8 +468,6 @@ MonoBehaviour:
   - {fileID: 1355046989234676151, guid: 49cfb2efb2789ee43a219565857b77fe, type: 3}
   - {fileID: 1612998000769603464, guid: b7478a01de04c404ebfaa2339910ef27, type: 3}
   agent: {fileID: 1632658926082945156}
-  rotation_speed: 35
-  swing: {fileID: 0}
   damage: 0
   ph: {fileID: 1777584022}
 --- !u!1001 &534606680
@@ -609,6 +607,16 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5597868058955841552, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597868058955841552, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2931322073931891758, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -633,6 +641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013470136871835463, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2974543c7e2d34bb34fc572dde0e5f, type: 3}
@@ -1560,15 +1573,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1224765051, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7816301467673929719, guid: 58127dbaeaca5d1468dec0743c899500,
         type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 2034016586}
+    - target: {fileID: 1224765051, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1761795958, guid: 58127dbaeaca5d1468dec0743c899500, type: 3}
       propertyPath: m_Enabled
       value: 1
