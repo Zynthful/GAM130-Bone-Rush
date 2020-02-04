@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114894558198943636}
-  - {fileID: 114929946813964088}
+  - {fileID: 114458783803920398}
   EditorEvents:
   - {fileID: 114306712798393148}
   - {fileID: 114605659072305672}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 114929946813964088}
+  - {fileID: 114458783803920398}
   StringsBanks:
   - {fileID: 114894558198943636}
-  stringsBankWriteTime: 637162535404651156
+  stringsBankWriteTime: 637164278267983378
   cacheVersion: 3
 --- !u!114 &114306712798393148
 MonoBehaviour:
@@ -40,7 +40,7 @@ MonoBehaviour:
   Path: event:/CrystalCrush
   guid: 2d948f8a5df5dd4887a5e828985b85ba
   Banks:
-  - {fileID: 114929946813964088}
+  - {fileID: 114458783803920398}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -48,6 +48,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5964
+--- !u!114 &114458783803920398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD Banks/Master.bank
+  SubDir: 
+  lastModified: 637164278267983378
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 131648
+  Exists: 1
 --- !u!114 &114605659072305672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +83,7 @@ MonoBehaviour:
   Path: event:/SwordSwings
   guid: 80ec3bf83734fd45a9f7c1f08ab16fa6
   Banks:
-  - {fileID: 114929946813964088}
+  - {fileID: 114458783803920398}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -105,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD Banks/Master.strings.bank
   SubDir: 
-  lastModified: 637162535404651156
+  lastModified: 637164278267983378
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -130,4 +150,4 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 131648
-  Exists: 1
+  Exists: 0
