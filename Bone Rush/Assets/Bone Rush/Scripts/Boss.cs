@@ -48,31 +48,9 @@ public class Boss : MonoBehaviour
             swing.SetBool("Attacking", false);
             attackDelay -= Time.deltaTime;
         }
+
         switch (_currentState)
         {
-            //in this state the enemy walks from one marker to another, then searches for the player
-            //will follow the player if they get too close
-            case State.Patrol:
-                {
-                    agent.SetDestination(enemy_location);
-                    float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
-                    if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
-                    {
-                        if (set_path == (destinations.Length-1))
-                        {
-                            set_path = -1;
-                        }
-                        set_path += 1;
-                    }
-
-
-                    if (distance_to_player <= follow_distance)
-                    {
-                        _currentState = State.Follow;
-                    }
-
-                    break;
-                }
             //follows the player unless they go out of range of the enemy
             //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
@@ -86,10 +64,6 @@ public class Boss : MonoBehaviour
                         _currentState = State.Attack;
                     }
 
-                    if (distance_to_player > (follow_distance * 2))
-                    {
-                        _currentState = State.Patrol;
-                    }
                     break;
 
                 }
@@ -121,7 +95,7 @@ public class Boss : MonoBehaviour
                     agent.SetDestination(enemy_location);
                     if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
                     {
-                        _currentState = State.Patrol;
+                        _currentState = State.Follow;
                     }
                     break;
                 }
@@ -130,7 +104,6 @@ public class Boss : MonoBehaviour
 
     public enum State
     {
-        Patrol,
         Follow,
         Attack,
         Retreat
