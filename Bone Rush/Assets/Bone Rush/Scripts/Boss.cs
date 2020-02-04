@@ -55,11 +55,12 @@ public class Boss : MonoBehaviour
             //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
                 {
+                    Debug.Log("follow");
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                    if (distance_to_player <= 4)
+                    if (distance_to_player <= 3)
                     {
                         _currentState = State.Attack;
                     }
@@ -70,7 +71,8 @@ public class Boss : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-                    if(attackDelay <= 0)
+                    Debug.Log("attack");
+                    if (attackDelay <= 0)
                     {
                         ph.playerHealth -= ph.damageTaken;
                         agent.SetDestination(current_location);
@@ -92,6 +94,7 @@ public class Boss : MonoBehaviour
                 }
             case State.Retreat:
                 {
+                    Debug.Log("retreat");
                     agent.SetDestination(enemy_location);
                     if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
                     {
