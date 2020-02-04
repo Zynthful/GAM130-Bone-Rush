@@ -54,7 +54,8 @@ public class StateMachine : MonoBehaviour
             //will follow the player if they get too close
             case State.Patrol:
                 {
-            
+                    Debug.Log("Patrol");
+
                     Vector3 enemy_location = destinations[set_path].transform.position;
                     agent.SetDestination(enemy_location);
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
@@ -81,6 +82,7 @@ public class StateMachine : MonoBehaviour
             //the enemy rotates 360 degrees and follows the player if they are within the enemies line of sight
             case State.Search:
                 {
+                    Debug.Log("Search");
                     hasAttacked = false;
                     transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
 
@@ -117,6 +119,7 @@ public class StateMachine : MonoBehaviour
             //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
                 {
+                    Debug.Log("Follow");
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
@@ -135,6 +138,13 @@ public class StateMachine : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
+                    Debug.Log("Attack");
+                    float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
+                    if (distance_to_player >= 1)
+                    {
+                        _currentState = State.Follow;
+                    }
+
                     if (hasAttacked == false)
                     {
                         ph.playerHealth -= ph.damageTaken;

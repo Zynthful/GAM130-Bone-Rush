@@ -1422,6 +1422,11 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1387678349}
+    - target: {fileID: 2850553200584484199, guid: 3424dac97f1e92643ab5c85988b3e4f7,
+        type: 3}
+      propertyPath: canRegen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8754060600150769398, guid: 3424dac97f1e92643ab5c85988b3e4f7,
         type: 3}
       propertyPath: healthSlider
@@ -1848,6 +1853,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8382841514031086290, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382841514031086290, guid: ec2974543c7e2d34bb34fc572dde0e5f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2931322073931891758, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1866,16 +1881,6 @@ PrefabInstance:
     - target: {fileID: 2931322073931891758, guid: ec2974543c7e2d34bb34fc572dde0e5f,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382841514031086290, guid: ec2974543c7e2d34bb34fc572dde0e5f,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382841514031086290, guid: ec2974543c7e2d34bb34fc572dde0e5f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5597868058388762108, guid: ec2974543c7e2d34bb34fc572dde0e5f,

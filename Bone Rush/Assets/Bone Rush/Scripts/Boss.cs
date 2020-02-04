@@ -33,6 +33,7 @@ public class Boss : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerWeapon")
         {
+            Debug.Log("hit detected");
             damage = true;
         }
     }
@@ -74,6 +75,8 @@ public class Boss : MonoBehaviour
                     Debug.Log("attack");
                     if (attackDelay <= 0)
                     {
+                        //attack always hits, need to check if attack hits
+                        //boss weapons collier is disabled to help boss more better
                         ph.playerHealth -= ph.damageTaken;
                         agent.SetDestination(current_location);
                         swing.SetBool("Attacking", true);
@@ -83,7 +86,7 @@ public class Boss : MonoBehaviour
                             player.SetActive(false);
                             SceneManager.LoadScene("SCN_Menu_Defeat");
                         }
-                        //_currentState = State.Retreat;
+                        _currentState = State.Retreat;
                         attackDelay = attackDelayReset;
                         break;
                     }
