@@ -52,6 +52,7 @@ public class SwordThings : MonoBehaviour
 			attackDelay -= Time.deltaTime;
 		}
 
+        //Attack automaticly released
 		if (countAttackTime)
 		{
 			attackHoldTime += Time.deltaTime;
@@ -60,6 +61,8 @@ public class SwordThings : MonoBehaviour
 				countAttackTime = false;
 			}
 		}
+
+        //reset counter
 		else if (startedCounting == true)
 		{
 			startedCounting = false;
@@ -68,17 +71,19 @@ public class SwordThings : MonoBehaviour
 		}
 		timePassedSinceAttacking += Time.deltaTime;
 
+        //Normal Attack
 		if (timePassedSinceAttacking >= 1.5f && !swordAnimation.GetBool("Left?"))
 		{
 			swordAnimation.SetBool("Swing", false);
 			swordAnimation.SetBool("ResetPos", true);
 			swordAnimation.SetBool("Left?", !swordAnimation.GetBool("Left?"));
 		}
+
+        //Animations
 		else if (swordAnimation.GetBool("ResetPos") && !swordAnimation.GetCurrentAnimatorStateInfo(0).IsName("SwordSwing"))
 		{
 			swordAnimation.SetBool("ResetPos", false);
 		}
-
 		if (swordAnimation.GetBool("Left?") && swordAnimation.GetCurrentAnimatorStateInfo(0).IsName("SwordSwing 0"))
 		{
 			swordAnimation.SetBool("Swing", false);
@@ -89,6 +94,7 @@ public class SwordThings : MonoBehaviour
 		}
 	}
 
+    //plays animation and sound
 	void Attack(float time)
 	{
 		attackDelay = .3f;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class PlayersHealth : MonoBehaviour
 {
     [SerializeField]
     private int CurrentHealth;
@@ -14,18 +14,18 @@ public class Health : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    void EnemyAttack(EnemyDamage)
+    void EnemyAttack()//EnemyDamage)
     {
-        CurrentHealth -= EnemyDamage;
+        //CurrentHealth -= EnemyDamage;
         if (CurrentHealth <= 0)
         {
 
         }
     }
     
-    void PlayerHealthLevel(HealthModifier)
+    void PlayerHealthLevel()//HealthModifier)
     {
-        Modifier = MaxHealth * HealthModifier;
+        //Modifier = MaxHealth * HealthModifier;
         MaxHealth += Modifier;
     }
 }
