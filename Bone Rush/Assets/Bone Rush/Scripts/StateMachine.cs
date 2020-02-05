@@ -83,7 +83,6 @@ public class StateMachine : MonoBehaviour
             case State.Search:
                 {
                     Debug.Log("Search");
-                    hasAttacked = false;
                     transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
 
                     int layerMask = 1 << 10;
@@ -120,11 +119,12 @@ public class StateMachine : MonoBehaviour
             case State.Follow:
                 {
                     Debug.Log("Follow");
+                    hasAttacked = false;
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                    if (distance_to_player <= 1 && !hasAttacked)
+                    if (distance_to_player <= 1.5 && !hasAttacked)
                     {
                         _currentState = State.Attack;
                     }
@@ -140,7 +140,7 @@ public class StateMachine : MonoBehaviour
                 {
                     Debug.Log("Attack");
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
-                    if (distance_to_player >= 1)
+                    if (distance_to_player >= 1.5)
                     {
                         _currentState = State.Follow;
                     }
