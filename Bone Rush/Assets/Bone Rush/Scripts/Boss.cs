@@ -19,7 +19,7 @@ public class Boss : MonoBehaviour
     private float stopping_rotation;
     private float enemy_current_rotation;
     private float player_health = 0;
-    private Animator swing;
+    public Animator swing;
     private const float attackDelayReset = 2f;
     private float attackDelay;
     public bool damage;
