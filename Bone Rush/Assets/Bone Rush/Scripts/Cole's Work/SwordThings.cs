@@ -156,7 +156,7 @@ public class SwordThings : MonoBehaviour
 		swordAnimation.SetBool("Left?", !swordAnimation.GetBool("Left?"));
 		swordAnimation.SetBool("Swing", true);
         // Triggers SwordSwings event in FMOD
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SwordSwings");
+        // FMODUnity.RuntimeManager.PlayOneShot("event:/SwordSwings");
     }
 
     public void Block(float damage = 0)
