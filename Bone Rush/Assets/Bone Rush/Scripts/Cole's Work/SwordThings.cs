@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class SwordThings : MonoBehaviour
 {
 
@@ -28,6 +29,10 @@ public class SwordThings : MonoBehaviour
     Animator shieldAnimation;
     [SerializeField]
     public PlayerStaminaBar stam;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip swordSwingAudio;
 
 	CameraShake cameraShake;
 
@@ -36,7 +41,9 @@ public class SwordThings : MonoBehaviour
 	{
 		cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
         shieldAnimation = GameObject.Find("PlayerShield").GetComponent<Animator>();
-		swordAnimation = GameObject.Find("PlayerSword").GetComponent<Animator>();
+        //swordSwingAudio = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
+        swordAnimation = GameObject.Find("PlayerSword").GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 		swordAnimation.SetBool("Left?", true);
         stam = GetComponent<PlayerStaminaBar>();
 	}
@@ -156,7 +163,8 @@ public class SwordThings : MonoBehaviour
 		swordAnimation.SetBool("Left?", !swordAnimation.GetBool("Left?"));
 		swordAnimation.SetBool("Swing", true);
         // Triggers SwordSwings event in FMOD
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SwordSwings");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/SwordSwings");
+        audioSource.PlayOneShot(swordSwingAudio);
     }
 
     public void Block(float damage = 0)

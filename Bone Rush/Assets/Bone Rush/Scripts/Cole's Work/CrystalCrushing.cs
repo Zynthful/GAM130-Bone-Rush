@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class CrystalCrushing : MonoBehaviour
 {
 
@@ -11,7 +12,10 @@ public class CrystalCrushing : MonoBehaviour
 	//public static bool crystalCrushed { get; set; }
 	bool crystalCrushed;
 
-	// public AudioClip crystalAudioClip;
+    [SerializeField]
+	private AudioClip crystalAudioClip;
+    [SerializeField]
+    private AudioSource audioSource;
 
 	public ParticleSystem crystalParticles;
 
@@ -21,7 +25,8 @@ public class CrystalCrushing : MonoBehaviour
     void Start()
     {
 		crystalParticles = GameObject.Find("CrystalPS").GetComponent<ParticleSystem>();
-		// crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
+		crystalAudioClip = (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Bone Rush/Imported Assets/Sounds Files/SFX_GP_CrushCrystal.wav", typeof(AudioClip));
+        audioSource = GetComponent<AudioSource>();
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SCN_Level_Boss"))
         {
@@ -59,7 +64,7 @@ public class CrystalCrushing : MonoBehaviour
 		if (crystalCrushed == false && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SCN_Level_Boss"))
 		{
             // Triggers CrystalCrush event in FMOD
-            FMODUnity.RuntimeManager.PlayOneShot("event:/CrystalCrush");
+            audioSource.PlayOneShot(crystalAudioClip);
             // AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
             crystalCrushed = true;
             gameObject.transform.parent = null;
