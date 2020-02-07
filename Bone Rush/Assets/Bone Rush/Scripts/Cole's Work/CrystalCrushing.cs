@@ -59,7 +59,7 @@ public class CrystalCrushing : MonoBehaviour
 		if (crystalCrushed == false && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SCN_Level_Boss"))
 		{
             // Triggers CrystalCrush event in FMOD
-            FMODUnity.RuntimeManager.PlayOneShot("event:/CrystalCrush");
+            // FMODUnity.RuntimeManager.PlayOneShot("event:/CrystalCrush");
             // AudioSource.PlayClipAtPoint(crystalAudioClip, transform.position);
             crystalCrushed = true;
             gameObject.transform.parent = null;

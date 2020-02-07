@@ -135,7 +135,14 @@ public class StateMachine : MonoBehaviour
                 {
                     if (hasAttacked == false)
                     {
-                        ph.playerHealth -= ph.damageTaken;
+                        if (player.GetComponent<SwordThings>().isBlocking)
+                        {
+                            player.GetComponent<SwordThings>().Block(ph.damageTaken);
+                        }
+                        else
+                        {
+                            ph.playerHealth -= ph.damageTaken;
+                        }
                         hasAttacked = true;
                         StartCoroutine(AttackDelay());
                     }                                    
