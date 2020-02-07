@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 6700212840994964217, guid: 6aa08cf3d264fcf4ea84d700ecc8408f,
         type: 3}
       propertyPath: m_Name
-      value: Slider
+      value: StaminaSlider
       objectReference: {fileID: 0}
     - target: {fileID: 6700212840994964219, guid: 6aa08cf3d264fcf4ea84d700ecc8408f,
         type: 3}
@@ -416,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 6700212840994964217, guid: 6aa08cf3d264fcf4ea84d700ecc8408f,
         type: 3}
       propertyPath: m_Name
-      value: Slider
+      value: HealthSlider
       objectReference: {fileID: 0}
     - target: {fileID: 6700212840994964219, guid: 6aa08cf3d264fcf4ea84d700ecc8408f,
         type: 3}

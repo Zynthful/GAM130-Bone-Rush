@@ -135,7 +135,7 @@ public class SwordThings : MonoBehaviour
             isBlocking = true;
             Block();
         }
-        else if ((Input.GetMouseButtonUp(1) && isBlocking) || stam.staminaBar.value < stam.maxStamina * 0.1)
+        else if ((!Input.GetMouseButton(1) && isBlocking) || stam.staminaBar.value < stam.maxStamina * 0.1)
         {
             isBlocking = false;
             Block();
@@ -159,14 +159,21 @@ public class SwordThings : MonoBehaviour
         // FMODUnity.RuntimeManager.PlayOneShot("event:/SwordSwings");
     }
 
-    public void Block(float damage = 0)
+    public void Block(float damage = 0, bool isBossAttack = false)
     {
         if (isBlocking)
         {
             Debug.Log("Blocking");
             shieldAnimation.SetBool("isBlocking", true);
             Debug.Log(damage);
-            stam.staminaBar.value -= Mathf.Clamp(damage*shieldBlockModifier, stam.minStamina, stam.maxStamina);
+            if (isBossAttack)
+            {
+                stam.staminaBar.value -= Mathf.Clamp(damage, stam.minStamina, stam.maxStamina);
+            }
+            else
+            {
+                stam.staminaBar.value -= Mathf.Clamp(damage * shieldBlockModifier, stam.minStamina, stam.maxStamina * 0.5f);
+            }
         }
         else
         {

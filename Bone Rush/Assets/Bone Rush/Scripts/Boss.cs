@@ -23,20 +23,21 @@ public class Boss : MonoBehaviour
     private const float attackDelayReset = 2f;
     private float attackDelay;
     public bool damage;
+    public bool attacking;
 
     [Header("Attacking Variables")]
     public PlayerHealth ph;
     private SwordThings st;
 
     //checks to see if the enemy has been attacked by a player weapon
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerWeapon" && st.swordAnimation.GetBool("Swing"))
         {
             Debug.Log("hit detected");
             damage = true;
         }
-    }
+    }*/
 
     private void Start()
     {
@@ -55,6 +56,10 @@ public class Boss : MonoBehaviour
         {
             swing.SetBool("Attacking", false);
             attackDelay -= Time.deltaTime;
+        }
+        else
+        {
+            attacking = false;
         }
 
         switch (_currentState)
@@ -82,10 +87,11 @@ public class Boss : MonoBehaviour
                     //Debug.Log("attack");
                     if (attackDelay <= 0)
                     {
+                        attacking = true;
+                        swing.SetBool("Attacking", true);
                         //attack always hits, need to check if attack hits
                         //boss weapons collier is disabled to help boss more better
                         agent.SetDestination(current_location);
-                        swing.SetBool("Attacking", true);     
                         _currentState = State.Retreat;
                         attackDelay = attackDelayReset;
                         break;

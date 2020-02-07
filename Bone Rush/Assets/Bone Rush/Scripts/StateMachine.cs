@@ -27,16 +27,17 @@ public class StateMachine : MonoBehaviour
     private SwordThings st;
     private float attackRate = 1f;
     private bool hasAttacked;
+    public bool attacking;
     
 
     //checks to see if the enemy has been attacked by a player weapon
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerWeapon" && st.swordAnimation.GetBool("Swing"))
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 
     private void Start()
     {
@@ -147,6 +148,7 @@ public class StateMachine : MonoBehaviour
 
                     if (hasAttacked == false)
                     {
+                        attacking = true;
                         if (player.GetComponent<SwordThings>().isBlocking)
                         {
                             player.GetComponent<SwordThings>().Block(ph.damageTaken);
@@ -183,6 +185,7 @@ public class StateMachine : MonoBehaviour
     {
         Debug.Log("ReachedCoroutine");
         yield return new WaitForSeconds(attackRate);
+        attacking = false;
         _currentState = State.Search;
     }
 }

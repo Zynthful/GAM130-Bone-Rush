@@ -120,7 +120,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2997132617736924958}
   m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
@@ -147,10 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinations:
-  - {fileID: 1355046989234676151, guid: 49cfb2efb2789ee43a219565857b77fe, type: 3}
-  - {fileID: 1612998000769603464, guid: b7478a01de04c404ebfaa2339910ef27, type: 3}
+  - {fileID: 7989049165069881373, guid: f0da01ac36d4fec47b46f139c63b6aff, type: 3}
   agent: {fileID: 2997132617736924948}
+  swing: {fileID: 0}
   damage: 0
+  attacking: 0
   ph: {fileID: 0}
 --- !u!1 &4557548918218447021
 GameObject:
@@ -165,6 +166,7 @@ GameObject:
   - component: {fileID: 4557548918218447023}
   - component: {fileID: 4557548918218447022}
   - component: {fileID: 4557548918218447058}
+  - component: {fileID: 29791025487397065}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Boss
@@ -240,7 +242,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4557548918218447021}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -264,6 +266,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &29791025487397065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557548918218447021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8f34363c22dd045ae0eba661cee87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToDo: 100
 --- !u!1 &4557548919047796916
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +365,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4557548919047796916}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
