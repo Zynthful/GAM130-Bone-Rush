@@ -8,34 +8,36 @@ using System.Collections;
 public class StateMachine : MonoBehaviour
 {
     [Header("Pathfinding Variables")]
-    public GameObject[] destinations;
+    [SerializeField]
+    private GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
     private float follow_distance = 10f;
     private int set_path = 0;
     private float look_range = 25f;
-    public float rotation_speed = 35;
+    private float rotation_speed = 35;
     private GameObject player;
     float current_rotation;
-    bool location_set = false;
-    float stopping_rotation;
-    float enemy_current_rotation;
+    private bool location_set = false;
+    private float stopping_rotation;
+    private float enemy_current_rotation;
 
     [Header("Attacking Variables")]
-    public PlayerHealth ph;
-    public SwordThings st;
-    public float attackRate = 1f;
+    private PlayerHealth ph;
+    private SwordThings st;
+    private float attackRate = 1f;
     private bool hasAttacked;
+    public bool attacking;
     
 
     //checks to see if the enemy has been attacked by a player weapon
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerWeapon" && st.swordAnimation.GetBool("Swing"))
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 
     private void Start()
     {
@@ -53,6 +55,8 @@ public class StateMachine : MonoBehaviour
             //will follow the player if they get too close
             case State.Patrol:
                 {
+                    Debug.Log("Patrol");
+
                     Vector3 enemy_location = destinations[set_path].transform.position;
                     agent.SetDestination(enemy_location);
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
@@ -79,7 +83,7 @@ public class StateMachine : MonoBehaviour
             //the enemy rotates 360 degrees and follows the player if they are within the enemies line of sight
             case State.Search:
                 {
-                    hasAttacked = false;
+                    Debug.Log("Search");
                     transform.Rotate(Vector3.up * rotation_speed * Time.deltaTime, Space.World);
 
                     int layerMask = 1 << 10;
@@ -115,11 +119,13 @@ public class StateMachine : MonoBehaviour
             //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
                 {
+                    Debug.Log("Follow");
+                    hasAttacked = false;
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                    if (distance_to_player <= 1 && !hasAttacked)
+                    if (distance_to_player <= 1.5 && !hasAttacked)
                     {
                         _currentState = State.Attack;
                     }
@@ -133,9 +139,24 @@ public class StateMachine : MonoBehaviour
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
+                    Debug.Log("Attack");
+                    float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
+                    if (distance_to_player >= 1.5)
+                    {
+                        _currentState = State.Follow;
+                    }
+
                     if (hasAttacked == false)
                     {
-                        ph.playerHealth -= ph.damageTaken;
+                        attacking = true;
+                        if (player.GetComponent<SwordThings>().isBlocking)
+                        {
+                            player.GetComponent<SwordThings>().Block(ph.damageTaken);
+                        }
+                        else
+                        {
+                            ph.playerHealth -= ph.damageTaken;
+                        }
                         hasAttacked = true;
                         StartCoroutine(AttackDelay());
                     }                                    
@@ -164,6 +185,7 @@ public class StateMachine : MonoBehaviour
     {
         Debug.Log("ReachedCoroutine");
         yield return new WaitForSeconds(attackRate);
+        attacking = false;
         _currentState = State.Search;
     }
 }

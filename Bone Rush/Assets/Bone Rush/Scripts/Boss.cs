@@ -1,39 +1,49 @@
 ﻿//Code adapted from https://unity3d.college/2019/04/28/unity3d-ai-with-state-machine-drones-and-lasers/  
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
     [Header("Pathfinding Variables")]
-    public GameObject[] destinations;
+    [SerializeField]
+    private GameObject[] destinations;
     private State _currentState;
     public NavMeshAgent agent;
     private float follow_distance = 10f;
     private int set_path = 0;
     private float look_range = 25f;
-    public float rotation_speed = 35;
+    private float rotation_speed = 35;
     private GameObject player;
-    float current_rotation;
-    bool location_set = false;
-    float stopping_rotation;
-    float enemy_current_rotation;
+    private float current_rotation;
+    private bool location_set = false;
+    private float stopping_rotation;
+    private float enemy_current_rotation;
     private float player_health = 0;
     public Animator swing;
-    const float attackDelayReset = 2f;
-    float attackDelay;
+    private const float attackDelayReset = 2f;
+    private float attackDelay;
     public bool damage;
+    public bool attacking;
 
     [Header("Attacking Variables")]
     public PlayerHealth ph;
+    private SwordThings st;
 
     //checks to see if the enemy has been attacked by a player weapon
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerWeapon")
+        if (other.gameObject.tag == "PlayerWeapon" && st.swordAnimation.GetBool("Swing"))
         {
+            Debug.Log("hit detected");
             damage = true;
         }
+    }*/
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        ph = player.GetComponent<PlayerHealth>();
+        st = player.GetComponent<SwordThings>();
     }
 
     private void Update()
@@ -47,66 +57,42 @@ public class Boss : MonoBehaviour
             swing.SetBool("Attacking", false);
             attackDelay -= Time.deltaTime;
         }
+        else
+        {
+            attacking = false;
+        }
+
         switch (_currentState)
         {
-            //in this state the enemy walks from one marker to another, then searches for the player
-            //will follow the player if they get too close
-            case State.Patrol:
-                {
-                    agent.SetDestination(enemy_location);
-                    float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
-                    if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
-                    {
-                        if (set_path == (destinations.Length-1))
-                        {
-                            set_path = -1;
-                        }
-                        set_path += 1;
-                    }
-
-
-                    if (distance_to_player <= follow_distance)
-                    {
-                        _currentState = State.Follow;
-                    }
-
-                    break;
-                }
             //follows the player unless they go out of range of the enemy
             //if the player gets far enough away the enemy goes back to patrolling
             case State.Follow:
                 {
+                    //Debug.Log("follow");
                     float distance_to_player = Vector3.Distance(transform.position, player.transform.position);
                     Vector3 player_location = player.transform.position;
                     agent.SetDestination(player_location);
 
-                    if (distance_to_player <= 4)
+                    if (distance_to_player <= 3)
                     {
                         _currentState = State.Attack;
                     }
 
-                    if (distance_to_player > (follow_distance * 2))
-                    {
-                        _currentState = State.Patrol;
-                    }
                     break;
 
                 }
             //placeholder for now, enemy attacks the player until one dies
             case State.Attack:
                 {
-                    if(attackDelay <= 0)
+                    //Debug.Log("attack");
+                    if (attackDelay <= 0)
                     {
-                        ph.playerHealth -= ph.damageTaken;
-                        agent.SetDestination(current_location);
+                        attacking = true;
                         swing.SetBool("Attacking", true);
-                        //player.SetActive(false);      
-                        if (ph.playerHealth <= 0)
-                        {
-                            player.SetActive(false);
-                            SceneManager.LoadScene("SCN_Menu_Defeat");
-                        }
-                        //_currentState = State.Retreat;
+                        //attack always hits, need to check if attack hits
+                        //boss weapons collier is disabled to help boss more better
+                        agent.SetDestination(current_location);
+                        _currentState = State.Retreat;
                         attackDelay = attackDelayReset;
                         break;
                     }
@@ -117,10 +103,11 @@ public class Boss : MonoBehaviour
                 }
             case State.Retreat:
                 {
+                    //Debug.Log("retreat");
                     agent.SetDestination(enemy_location);
                     if (current_location.x == enemy_location.x && current_location.z == enemy_location.z)
                     {
-                        _currentState = State.Patrol;
+                        _currentState = State.Follow;
                     }
                     break;
                 }
@@ -129,7 +116,6 @@ public class Boss : MonoBehaviour
 
     public enum State
     {
-        Patrol,
         Follow,
         Attack,
         Retreat
